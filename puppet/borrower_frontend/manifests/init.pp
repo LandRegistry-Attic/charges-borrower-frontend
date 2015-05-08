@@ -4,7 +4,7 @@ class borrower_frontend {
     ensure   => present,
     provider => git,
     source   => 'git://github.com/LandRegistry/charges-borrower-frontend',
-    revision => 'master',
+    revision => 'puppet-module',
     notify   => Service['borrower_frontend'],
   }
   file { '/etc/systemd/system/borrower_frontend.service':
