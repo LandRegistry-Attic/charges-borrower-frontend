@@ -1,7 +1,7 @@
 
 name="borrower_frontend"
 
-RUNAS=""
+RUNAS="root"
 SCRIPT="./opt/${name}/bin/run.sh"
 
 PIDFILE="/var/run/${name}.pid"
