@@ -6,7 +6,7 @@ class borrower_frontend {
     source   => 'git://github.com/LandRegistry/charges-borrower-frontend',
     revision => 'master'
   }
-  file { '/etc/init.d/borrower_frontend.service':
+  file { '/usr/local/systemd/system/borrower_frontend.service':
     ensure => 'file',
     mode   => '0755',
     owner  => 'root',
@@ -15,7 +15,8 @@ class borrower_frontend {
     notify => Service['borrower_frontend'],
   }
   service { 'borrower_frontend':
-    ensure => 'running',
-    enable => true,
+    ensure   => 'running',
+    enable   => true,
+    provider => 'systemd',
   }
 }
