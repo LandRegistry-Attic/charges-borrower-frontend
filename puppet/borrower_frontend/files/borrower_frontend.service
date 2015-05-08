@@ -1,5 +1,6 @@
 [Unit]
 Description=Charges borrower frontend
+StopWhenUnneeded=true
 
 [Service]
 WorkingDirectory=/opt/borrower_frontend
@@ -9,4 +10,6 @@ Restart=always
 StandardInput=null
 StandardOutput=syslog
 StandardError=syslog
+SyslogIdentifier=%n
 KillMode=process
+Type=forking
