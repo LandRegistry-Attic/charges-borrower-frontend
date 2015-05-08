@@ -4,7 +4,8 @@ class borrower_frontend {
     ensure   => present,
     provider => git,
     source   => 'git://github.com/LandRegistry/charges-borrower-frontend',
-    revision => 'master'
+    revision => 'master',
+    notify   => Service['borrower_frontend'],
   }
   file { '/etc/systemd/system/borrower_frontend.service':
     ensure => 'file',
@@ -19,4 +20,6 @@ class borrower_frontend {
     enable   => true,
     provider => 'systemd',
   }
+  File['/etc/systemd/system/borrower_frontend.service']
+    ~> Service['borrower_frontend']
 }
