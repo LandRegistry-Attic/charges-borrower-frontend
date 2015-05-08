@@ -1,0 +1,12 @@
+[Unit]
+Description=Charges borrower frontend
+
+[Service]
+WorkingDirectory=/opt/borrower_frontend
+Environment=PORT=5000
+ExecStart=/bin/bash -lc './bin/run.sh'
+Restart=always
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog
+KillMode=process
