@@ -6,7 +6,7 @@ class borrower_frontend {
     source   => 'git://github.com/LandRegistry/charges-borrower-frontend',
     revision => 'master'
   }
-  file { '/usr/local/systemd/system/borrower_frontend.service':
+  file { '/etc/systemd/system/borrower_frontend.service':
     ensure => 'file',
     mode   => '0755',
     owner  => 'root',
