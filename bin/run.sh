@@ -1,8 +1,9 @@
 #! /usr/bin/bash
 
-dot="$(cd "$(dirname "$0")"; pwd)"
-cd $dot
+virtualenv ./.service_env
+
+source ./.service_env/bin/activate
 
 pip3 install -r requirements.txt
 
-gunicorn "app:create_app().app"
+gunicorn "app:create_manager().app"
