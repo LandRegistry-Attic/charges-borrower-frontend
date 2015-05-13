@@ -1,11 +1,11 @@
 [Unit]
-Description=Charges borrower frontend
+Description=Start the Charges Borrower Frontend
 
 [Service]
-WorkingDirectory=/opt/borrower_frontend/
-Environment=PORT=5000
-ExecStart=/bin/bash -lc './bin/run.sh'
-Restart=always
-StandardInput=null
-KillMode=process
+WorkingDirectory=/opt/borrower_frontend
 Type=forking
+ExecStart=/bin/bash -c './bin/run.sh'
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
