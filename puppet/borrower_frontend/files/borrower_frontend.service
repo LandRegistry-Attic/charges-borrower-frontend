@@ -2,10 +2,12 @@
 Description=Start the Charges Borrower Frontend
 
 [Service]
-WorkingDirectory=/opt/borrower_frontend
-Type=forking
+PIDFile=/var/run/borrower_frontend.pid
+WorkingDirectory=/opt/borrower-frontend
+Type=simple
 ExecStart=/bin/bash -c './bin/run.sh'
-KillMode=process
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
 
 [Install]
 WantedBy=multi-user.target

@@ -23,6 +23,7 @@ class borrower_frontend {
     ensure   => 'running',
     enable   => true,
     provider => 'systemd',
+    require  => Vcsrepo['/opt/borrower-frontend']
   }
   File['/etc/systemd/system/borrower_frontend.service']
     ~> Service['borrower_frontend']
