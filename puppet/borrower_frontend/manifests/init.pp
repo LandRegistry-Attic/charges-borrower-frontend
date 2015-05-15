@@ -23,6 +23,7 @@ class borrower_frontend {
     owner  => 'vagrant',
     group  => 'vagrant',
     source => "puppet:///modules/${module_name}/borrower_frontend.service",
+    notify => Exec['systemctl-daemon-reload'],
   }
   service { 'borrower_frontend':
     ensure   => 'running',
