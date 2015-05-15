@@ -9,7 +9,13 @@ class borrower_frontend {
     revision => 'puppet-module',
     owner    => 'vagrant',
     group    => 'vagrant',
-    notify   => Service['borrower_frontend'],
+  }
+  file { '/etc/init.d/borrower_frontend':
+    ensure => 'file',
+    mode   => '0755',
+    owner  => 'vagrant',
+    group  => 'vagrant',
+    source => "puppet:///modules/${module_name}/borrower_frontend.initd",
   }
   file { '/etc/systemd/system/borrower_frontend.service':
     ensure => 'file',
@@ -17,14 +23,15 @@ class borrower_frontend {
     owner  => 'vagrant',
     group  => 'vagrant',
     source => "puppet:///modules/${module_name}/borrower_frontend.service",
-    notify => Service['borrower_frontend'],
   }
   service { 'borrower_frontend':
     ensure   => 'running',
     enable   => true,
     provider => 'systemd',
-    require  => Vcsrepo['/opt/borrower-frontend']
+    require  => [
+      Vcsrepo['/opt/borrower-frontend'],
+      File['/etc/init.d/borrower_frontend'],
+      File['/etc/systemd/system/borrower_frontend.service']
+    ],
   }
-  File['/etc/systemd/system/borrower_frontend.service']
-    ~> Service['borrower_frontend']
 }
