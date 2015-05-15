@@ -6,4 +6,4 @@ source ./.service_env/bin/activate
 
 pip3 install -r requirements.txt
 
-gunicorn --pid /var/run/borrower_frontend.pid "app:create_manager().app"
+gunicorn -b 0.0.0.0:8000 --pid /var/run/borrower_frontend.pid "app:create_manager().app"
