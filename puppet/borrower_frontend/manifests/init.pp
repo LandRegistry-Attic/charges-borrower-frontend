@@ -3,19 +3,21 @@ class borrower_frontend ($port = '9000', $host = '0.0.0.0') {
   include ::standard_env
 
   vcsrepo { '/opt/borrower-frontend':
-    ensure   => present,
+    ensure   => latest,
     provider => git,
     source   => 'git://github.com/LandRegistry/charges-borrower-frontend',
     revision => 'puppet-module',
     owner    => 'vagrant',
     group    => 'vagrant',
+    notify   => Service['borrower_frontend'],
   }
   file { '/opt/borrower-frontend/sbin/run.sh':
     ensure => 'file',
     mode   => '0755',
     owner  => 'vagrant',
     group  => 'vagrant',
-    source => "puppet:///modules/${module_name}/run.sh"
+    source => "puppet:///modules/${module_name}/run.sh",
+    notify => Service['borrower_frontend'],
   }
   file { '/etc/init.d/borrower_frontend':
     ensure => 'file',
