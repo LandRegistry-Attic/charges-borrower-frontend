@@ -4,6 +4,7 @@ Description=Start the Charges Borrower Frontend
 [Service]
 PIDFile=/var/run/borrower_frontend.pid
 WorkingDirectory=/opt/borrower-frontend
+Environment='B_GUNICORN_PORT=<%= $port %>' 'B_GUNICORN_HOST=<%=$host%>'
 Type=simple
 ExecStart=/bin/bash -c './bin/run.sh'
 ExecReload=/bin/kill -s HUP $MAINPID

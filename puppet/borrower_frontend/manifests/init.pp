@@ -1,5 +1,5 @@
 # Install and configure the Charges Borrower Frontend
-class borrower_frontend {
+class borrower_frontend ($port = '9000', $host = '0.0.0.0') {
   include ::standard_env
 
   vcsrepo { '/opt/borrower-frontend':
@@ -18,12 +18,12 @@ class borrower_frontend {
     source => "puppet:///modules/${module_name}/borrower_frontend.initd",
   }
   file { '/etc/systemd/system/borrower_frontend.service':
-    ensure => 'file',
-    mode   => '0755',
-    owner  => 'vagrant',
-    group  => 'vagrant',
-    source => "puppet:///modules/${module_name}/borrower_frontend.service",
-    notify => Exec['systemctl-daemon-reload'],
+    ensure  => 'file',
+    mode    => '0755',
+    owner   => 'vagrant',
+    group   => 'vagrant',
+    content => template("${module_name}/borrower_frontend_service.erb"),
+    notify  => [Exec['systemctl-daemon-reload'], Service['borrower_frontend']],
   }
   service { 'borrower_frontend':
     ensure   => 'running',
