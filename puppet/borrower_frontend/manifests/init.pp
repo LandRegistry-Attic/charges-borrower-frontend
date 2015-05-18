@@ -10,6 +10,13 @@ class borrower_frontend ($port = '9000', $host = '0.0.0.0') {
     owner    => 'vagrant',
     group    => 'vagrant',
   }
+  file { '/opt/borrower-frontend/sbin/run.sh':
+    ensure => 'file',
+    mode   => '0755',
+    owner  => 'vagrant',
+    group  => 'vagrant',
+    source => "puppet:///modules/${module_name}/run.sh"
+  }
   file { '/etc/init.d/borrower_frontend':
     ensure => 'file',
     mode   => '0755',
@@ -31,6 +38,7 @@ class borrower_frontend ($port = '9000', $host = '0.0.0.0') {
     provider => 'systemd',
     require  => [
       Vcsrepo['/opt/borrower-frontend'],
+      File['/opt/borrower_frontend/sbin/run.sh'],
       File['/etc/init.d/borrower_frontend'],
       File['/etc/systemd/system/borrower_frontend.service']
     ],
