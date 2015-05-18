@@ -41,7 +41,7 @@ class borrower_frontend ($port = '9000', $host = '0.0.0.0') {
     provider => 'systemd',
     require  => [
       Vcsrepo['/opt/borrower-frontend'],
-      File['/opt/borrower-frontend/sbin/run.sh'],
+      File['/opt/borrower-frontend/bin/run.sh'],
       File['/etc/init.d/borrower_frontend'],
       File['/etc/systemd/system/borrower_frontend.service']
     ],
