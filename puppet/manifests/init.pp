@@ -6,7 +6,7 @@ class borrower_frontend (
 ) {
   require ::standard_env
 
-  vcsrepo { '/opt/borrower-frontend':
+  vcsrepo { '/opt/borrower_frontend':
     ensure   => latest,
     provider => git,
     source   => 'git://github.com/LandRegistry/charges-borrower-frontend',
@@ -15,13 +15,13 @@ class borrower_frontend (
     group    => 'vagrant',
     notify   => Service['borrower_frontend'],
   }
-  file { '/opt/borrower-frontend/bin/run.sh':
+  file { '/opt/borrower_frontend/bin/run.sh':
     ensure  => 'file',
     mode    => '0755',
     owner   => 'vagrant',
     group   => 'vagrant',
     source  => "puppet:///modules/${module_name}/run.sh",
-    require => Vcsrepo['/opt/borrower-frontend'],
+    require => Vcsrepo['/opt/borrower_frontend'],
     notify  => Service['borrower_frontend'],
   }
   file { '/etc/nginx/conf.d/borrower_frontend.conf':
@@ -52,8 +52,8 @@ class borrower_frontend (
     enable   => true,
     provider => 'systemd',
     require  => [
-      Vcsrepo['/opt/borrower-frontend'],
-      File['/opt/borrower-frontend/bin/run.sh'],
+      Vcsrepo['/opt/borrower_frontend'],
+      File['/opt/borrower_frontend/bin/run.sh'],
       File['/etc/init.d/borrower_frontend'],
       File['/etc/systemd/system/borrower_frontend.service']
     ],
