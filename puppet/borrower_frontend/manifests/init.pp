@@ -1,6 +1,6 @@
 # Install and configure the Charges Borrower Frontend
 class borrower_frontend ($port = '9000', $host = '0.0.0.0') {
-  include ::standard_env
+  require ::standard_env
 
   vcsrepo { '/opt/borrower-frontend':
     ensure   => latest,
@@ -19,6 +19,14 @@ class borrower_frontend ($port = '9000', $host = '0.0.0.0') {
     source  => "puppet:///modules/${module_name}/run.sh",
     require => Vcsrepo['/opt/borrower-frontend'],
     notify  => Service['borrower_frontend'],
+  }
+  file { '/etc/nginx/conf.d/borrower_frontend.conf':
+    ensure  => 'file',
+    mode    => '0755',
+    content => template("${module_name}/nginx.conf.erb"),
+    owner   => 'vagrant',
+    group   => 'vagrant',
+    notify  => Service['nginx'],
   }
   file { '/etc/init.d/borrower_frontend':
     ensure => 'file',
