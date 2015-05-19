@@ -1,12 +1,16 @@
 # Install and configure the Charges Borrower Frontend
-class borrower_frontend ($port = '9000', $host = '0.0.0.0') {
+class borrower_frontend (
+    $port = '9000',
+    $host = '0.0.0.0',
+    $branch_or_revision = 'master'
+) {
   require ::standard_env
 
   vcsrepo { '/opt/borrower-frontend':
     ensure   => latest,
     provider => git,
     source   => 'git://github.com/LandRegistry/charges-borrower-frontend',
-    revision => 'puppet-module',
+    revision => $branch_or_revision,
     owner    => 'vagrant',
     group    => 'vagrant',
     notify   => Service['borrower_frontend'],
