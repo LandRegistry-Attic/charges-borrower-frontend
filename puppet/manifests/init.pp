@@ -33,11 +33,11 @@ class borrower_frontend (
     notify  => Service['nginx'],
   }
   file { '/etc/init.d/borrower_frontend':
-    ensure => 'file',
-    mode   => '0755',
-    owner  => 'vagrant',
-    group  => 'vagrant',
-    source => "puppet:///modules/${module_name}/borrower_frontend.initd",
+    ensure  => 'file',
+    mode    => '0755',
+    owner   => 'vagrant',
+    group   => 'vagrant',
+    content => template("${module_name}/service.initd.erb"),
   }
   file { '/etc/systemd/system/borrower_frontend.service':
     ensure  => 'file',
