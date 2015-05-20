@@ -3,3 +3,11 @@ __pycache__
 .webassets-cache
 *.pyc
 .DS_Store
+.coverage
+coverage.xml
+test-reports/
+/acceptance-tests/sshot*
+/puppet/borrower_frontend/modules
+*.lock
+.librarian
+.tmp
