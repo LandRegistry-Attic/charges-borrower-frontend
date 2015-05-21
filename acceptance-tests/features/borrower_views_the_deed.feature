@@ -6,7 +6,7 @@ Feature: Borrower Views the Deed
     So that I can view it
 
 Background:
-    Given I navigate to the "search for deed" page
+    Given I navigate to the deed search page
 
 Scenario: Borrower enters a valid mortgage reference number
     When I search for a deed with reference "1234"
