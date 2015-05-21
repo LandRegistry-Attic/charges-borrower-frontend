@@ -10,10 +10,10 @@ Background:
 
 Scenario: Borrower enters a valid mortgage reference number
     When I search for a deed with reference "1234"
-    Then the text “Sign your mortgage deed” appears on the page
-    And "GHR67832" appears on the page
-    And "Flat 16 Kingman Court" appears on the page
+    Then the “Sign your mortgage deed” page is displayed
+    And the title number appears on the page
+    And the property address appears on the page
 
 Scenario: Borrower enters invalid mortgage reference number
     When I search for a deed with reference "3456"
-    Then the text “Invalid deed reference” appears on the page
+    Then the “Invalid deed reference” page is displayed
