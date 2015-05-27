@@ -28,7 +28,7 @@
         </div>
 
         <p itemscope="" itemtype="http://schema.org/Corporation">
-            <span itemprop="name">
+            <span id="lender-name" itemprop="name">
                 {{lender.name}}
             </span>
             <br>
@@ -57,11 +57,15 @@
             {{#borrowers}}
                 <div class="column-third">
                     <p>
-                        <b>{{forename}} {{surname}}</b><br>
+                        <span id=borrower-name-{{index}}'>
+                            <b>{{forename}} {{surname}}</b>
+                        </span><br>
+                        <span id="borrower-address-{{index}}">
                         {{address.street_address}}<br>
-                        {{address.extended_address}}<br>
-                        {{address.locality}}<br>
-                        {{address.postal_code}}<br>
+                            {{address.extended_address}}<br>
+                            {{address.locality}}<br>
+                            {{address.postal_code}}<br>
+                        </span>
                     </p>
                 </div>
             {{/borrowers}}
@@ -69,12 +73,12 @@
     </div>
 
     <div class="text">
-        <h3 class="heading-small">Charging clause:</h3>
+        <h3 id="charging-clause" class="heading-small">Charging clause:</h3>
 
         <p>You, the borrower, with full title guarantee, charge property to the lender by way of legal mortgage with the
             payment of all money secured by this charge.</p>
 
-        <h3 class="heading-small">Additional provisions:</h3>
+        <h3 id="additional-provisions" class="heading-small">Additional provisions:</h3>
         <ul class="list-bullet">
             <li>
                 <p>This Mortgage Deed incorporates the <a href="#" rel="external">Lenders Mortgage Conditions and

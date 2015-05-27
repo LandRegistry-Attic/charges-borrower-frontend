@@ -12,8 +12,12 @@ def get_borrowers():
                         borrower.get('middle'),
                         get_address(borrower.get('address')))
 
-    borrowers = get_borrowers_json()
-    return [borrower_from_dict(item) for item in borrowers]
+    def with_index(borrowers):
+        for idx, val in enumerate(borrowers):
+            val.index = idx
+        return borrowers;
+
+    return with_index([borrower_from_dict(item) for item in get_borrowers_json()])
 
 
 def get_lender():

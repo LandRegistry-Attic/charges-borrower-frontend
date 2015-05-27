@@ -11,7 +11,7 @@ def mocked_requests_get(*args):
         def json(self):
             return self.json_data
 
-    return MockResponse({}, 200)
+    return MockResponse({'address' : {}}, 200)
 
 
 class TestViewDeed(TestCase):
