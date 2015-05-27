@@ -10,10 +10,10 @@
 
         <p itemscope="" itemtype="http://schema.org/PostalAddress">
             <span id="property-address" itemprop="streetAddress">
-                {{land_property.address_1}}<br>
-                {{land_property.address_2}}<br>
+                {{land_property.address.street_address}}<br>
+                {{land_property.address.extended_address}}<br>
             </span>
-            <span itemprop="addressLocality">{{land_property.city}}</span><br>
+            <span itemprop="addressLocality">{{land_property.address.locality}}</span><br>
         </p>
 
         <dl class="definition-inline">
@@ -34,10 +34,10 @@
             <br>
             <span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress" class="address-inline">
                 <span itemprop="streetAddress">
-                    {{lender.address_1}}, {{lender.address_2}},
+                    {{lender.address.street_address}}, {{lender.address.extended_address}},
                 </span>
                 <span itemprop="addressLocality">
-                    {{lender.city}}
+                    {{lender.locality}}
                 </span>
             </span>
         </p>
@@ -56,13 +56,13 @@
         <div class="grid-row">
             {{#borrowers}}
                 <div class="column-third">
-                    <dl>
-                        <dd>{{forename}} {{surname}}</dd>
-                        <dd>{{address_1}}</dd>
-                        <dd>{{address_2}}</dd>
-                        <dd>{{city}}</dd>
-                        <dd>{{postcode}}</dd>
-                    </dl>
+                    <p>
+                        <b>{{forename}} {{surname}}</b><br>
+                        {{address.street_address}}<br>
+                        {{address.extended_address}}<br>
+                        {{address.locality}}<br>
+                        {{address.postal_code}}<br>
+                    </p>
                 </div>
             {{/borrowers}}
         </div>
@@ -111,30 +111,3 @@
         to sign.</p>
 </div>
 
-
-<div id="request-code">
-    <div class="form">
-        <div class="form-group">
-            <h4 class="form-header heading-small">How would you like to receive your code?</h4>
-            <label class="block-label" for="radio-1">
-                <input id="radio-1" type="radio" name="radio-group" value="1">
-                By text message, to my mobile number ending <b>4232</b>
-            </label>
-            <label class="block-label" for="radio-2">
-                <input id="radio-2" type="radio" name="radio-group" value="2">
-                By a phone call, to my phone number ending <b>1632</b>
-            </label>
-            <label class="block-label" for="radio-3">
-                <input id="radio-3" type="radio" name="radio-group" value="3">
-                By email, to <b>email@domain.co.uk</b>
-            </label>
-            <label class="block-label" for="radio-4">
-                <input id="radio-4" type="radio" name="radio-group" value="4">
-                By email, to <b>second-email@domain.co.uk</b>
-            </label>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="button">Get authentication code</button>
-        </div>
-    </div>
-</div>
