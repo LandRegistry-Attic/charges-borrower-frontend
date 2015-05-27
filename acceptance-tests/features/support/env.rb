@@ -5,4 +5,4 @@
 ################################################################################
 
 $HELLOWORLD_DOMAIN = (ENV['HELLOWORLD_DOMAIN'] || 'http://localhost:5000')
-$CHARGES_URL = (ENV['CHARGES_SIGN_DEED_URL'] || 'http://localhost:')
+$CHARGES_URL = (ENV['CHARGES_URL'] || 'http://localhost:5000')
