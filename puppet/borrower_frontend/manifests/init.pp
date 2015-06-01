@@ -2,7 +2,8 @@
 class borrower_frontend (
     $port = '9000',
     $host = '0.0.0.0',
-    $branch_or_revision = 'master'
+    $branch_or_revision = 'master',
+    $deed_api_address = 'http://localhost:5050'
 ) {
   require ::standard_env
 
