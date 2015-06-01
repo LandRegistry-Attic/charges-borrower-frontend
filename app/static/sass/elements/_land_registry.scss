@@ -1,0 +1,52 @@
+// An inline definition list - name:value pairs for example
+
+/* dd */.definition-inline {
+  @extend %contain-floats;
+  dt {
+    clear: left;
+    float: left;
+    margin-right: 0.2em;
+    &:after {
+      content: ':';
+    }
+  }
+  dd {
+    float: left;
+  }
+}
+
+.deed-document--bounds {
+  margin-bottom: $gutter;
+  padding: 0 $gutter $gutter $gutter;
+  border-color: $light-blue;
+  border-width: 3px 2px;
+  border-style: solid;
+}
+
+.deed-document--divider {
+  margin-top: $gutter;
+  padding-top: $gutter-half;
+  border-top: 1px solid $grey-3;
+}
+
+// exclamation mark in a circle !
+
+.alert-inline:before,
+.alert-box:before {
+  content: '!';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  color: $white;
+  font-weight: 700;
+  background-color: $black;
+  border-radius: 100%;
+}
+.alert-box:before {
+  left: $gutter-half;
+  top: $gutter-half;
+}

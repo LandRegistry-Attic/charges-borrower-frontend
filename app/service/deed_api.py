@@ -5,7 +5,7 @@ import requests
 DEED_API_BASE_HOST = config.DEED_API_BASE_HOST
 
 
-def get_borrowers():
+def get_borrowers(ids):
     def borrower_from_dict(borrower):
         return Borrower(borrower.get('forename'),
                         borrower.get('surname'),
@@ -16,7 +16,7 @@ def get_borrowers():
         borrower.index = index
         return borrower;
 
-    return [with_index(borrower_from_dict(item), idx) for idx, item in enumerate(get_borrowers_json())]
+    return [with_index(borrower_from_dict(item), idx) for idx, item in enumerate(get_borrowers_json(ids))]
 
 
 def get_lender():
@@ -39,10 +39,13 @@ def get_address(address_json):
                    address_json.get('postal-code'))
 
 
-def get_borrowers_json():
-    response_1 = requests.get(DEED_API_BASE_HOST + '/borrower/1')
-    response_2 = requests.get(DEED_API_BASE_HOST + '/borrower/2')
-    return [response_1.json(), response_2.json()]
+def get_borrowers_json(ids):
+    borrowers = []
+    for borrower_id in ids:
+        response = requests.get(DEED_API_BASE_HOST + '/borrower/' + str(borrower_id))
+        if response.status_code == 200:
+            borrowers.append(response.json())
+    return borrowers
 
 
 def get_lender_json():
