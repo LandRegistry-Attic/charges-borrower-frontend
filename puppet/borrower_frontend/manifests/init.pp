@@ -3,6 +3,8 @@ class borrower_frontend (
     $port = '9000',
     $host = '0.0.0.0',
     $branch_or_revision = 'master',
+    $owner = 'vagrant',
+    $group = 'vagrant',
     $deed_api_address = 'http://localhost:5050'
 ) {
   require ::standard_env
@@ -12,15 +14,15 @@ class borrower_frontend (
     provider => git,
     source   => 'git://github.com/LandRegistry/charges-borrower-frontend',
     revision => $branch_or_revision,
-    owner    => 'vagrant',
-    group    => 'vagrant',
+    owner    => $owner,
+    group    => $group,
     notify   => Service['borrower_frontend'],
   }
   file { '/opt/borrower-frontend/bin/run.sh':
     ensure  => 'file',
     mode    => '0755',
-    owner   => 'vagrant',
-    group   => 'vagrant',
+    owner   => $owner,
+    group   => $group,
     source  => "puppet:///modules/${module_name}/run.sh",
     require => Vcsrepo['/opt/borrower-frontend'],
     notify  => Service['borrower_frontend'],
@@ -29,22 +31,22 @@ class borrower_frontend (
     ensure  => 'file',
     mode    => '0755',
     content => template("${module_name}/nginx.conf.erb"),
-    owner   => 'vagrant',
-    group   => 'vagrant',
+    owner   => $owner,
+    group   => $group,
     notify  => Service['nginx'],
   }
   file { '/etc/init.d/borrower_frontend':
     ensure => 'file',
     mode   => '0755',
-    owner  => 'vagrant',
-    group  => 'vagrant',
+    owner  => $owner,
+    group  => $group,
     source => "puppet:///modules/${module_name}/borrower_frontend.initd",
   }
   file { '/etc/systemd/system/borrower_frontend.service':
     ensure  => 'file',
     mode    => '0755',
-    owner   => 'vagrant',
-    group   => 'vagrant',
+    owner   => $owner,
+    group   => $group,
     content => template("${module_name}/borrower_frontend_service.erb"),
     notify  => [Exec['systemctl-daemon-reload'], Service['borrower_frontend']],
   }
