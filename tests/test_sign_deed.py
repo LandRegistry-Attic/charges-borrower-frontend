@@ -16,6 +16,6 @@ class TestSearchDeed(unittest.TestCase):
     @with_context
     @with_client
     def test_sign_deed_get(self, client):
-        res = client.get('/deed/search')
+        res = client.get('/deed/sign/confirmation')
 
         self.assertEqual(res.status_code, 200)
