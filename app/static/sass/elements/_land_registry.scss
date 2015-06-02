@@ -1,0 +1,117 @@
+@import "measurements";
+@import "colours";
+
+// An inline definition list - name:value pairs for example
+
+/* dd */.definition-inline {
+  @extend %contain-floats;
+  dt {
+    clear: left;
+    float: left;
+    margin-right: 0.2em;
+    &:after {
+      content: ':';
+    }
+  }
+  dd {
+    float: left;
+  }
+}
+
+.deed-document--bounds {
+  margin-bottom: $gutter;
+  padding: 0 $gutter $gutter $gutter;
+  border-color: $light-blue;
+  border-width: 3px 2px;
+  border-style: solid;
+}
+
+.deed-document--divider {
+  margin-top: $gutter;
+  padding-top: $gutter-half;
+  border-top: 1px solid $grey-3;
+}
+
+// exclamation mark in a circle !
+.alert-inline {
+  position: relative;
+  padding-left: $gutter*1.5;
+}
+
+.alert-inline:before,
+.alert-box:before {
+  content: '!';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  color: $white;
+  font-weight: 700;
+  background-color: $black;
+  border-radius: 100%;
+}
+.alert-box:before {
+  left: $gutter-half;
+  top: $gutter-half;
+}
+
+.button {
+    background-color: #00823b;
+    position: relative;
+    display: -moz-inline-stack;
+    display: inline-block;
+    padding: 0.3em 0.6em 0.2em 0.6em;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -webkit-box-shadow: 0 2px 0 #003518;
+    -moz-box-shadow: 0 2px 0 #003518;
+    box-shadow: 0 2px 0 #003518;
+    font-size: 1em;
+    line-height: 1.25;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    color: #fff;
+    margin: 0 15px 15px 0;
+    padding: 0.52632em 0.78947em 0.26316em 0.78947em;
+    vertical-align: top;
+}
+
+.heading-xlarge, h1 {
+    font-family: "nta",Arial,sans-serif;
+    font-size: 48px;
+    line-height: 1.04167;
+    font-weight: 400;
+    text-transform: none;
+    font-weight: 700;
+    margin-top: 0.46875em;
+    margin-bottom: 0.9375em;
+}
+
+.heading-large, h2 {
+    font-family: "nta",Arial,sans-serif;
+    font-size: 36px;
+    line-height: 1.11111;
+    font-weight: 400;
+    text-transform: none;
+    font-weight: 700;
+    margin-top: 1.04167em;
+    margin-bottom: 0.41667em;
+}
+
+.heading-medium, h3 {
+    font-family: "nta",Arial,sans-serif;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 400;
+    text-transform: none;
+    font-weight: 700;
+    margin-top: 1.25em;
+    margin-bottom: 0.5em;
+}

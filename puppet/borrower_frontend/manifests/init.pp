@@ -4,7 +4,8 @@ class borrower_frontend (
     $host = '0.0.0.0',
     $branch_or_revision = 'master',
     $owner = 'vagrant',
-    $group = 'vagrant'
+    $group = 'vagrant',
+    $deed_api_address = 'http://localhost:5050'
 ) {
   require ::standard_env
 

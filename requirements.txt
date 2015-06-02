@@ -4,4 +4,6 @@ Flask-Script
 libsass
 Flask-Assets
 govuk-template
+requests
 gunicorn
+httmock

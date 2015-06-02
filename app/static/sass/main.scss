@@ -1,4 +1,6 @@
-@import '_grid_layout.scss';
+@import "layout";
+@import "forms";
+@import "land_registry";
 
 main {
   @extend %site-width-container;
