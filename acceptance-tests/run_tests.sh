@@ -14,7 +14,7 @@ set -e
 rm -f sshot*
 
 ### Installs any gems specified in the gemfile.
-bundle install --gemfile=$currentlocation/Gemfile
+bundle install --gemfile=$currentLocation/Gemfile
 
 if [ -z "$1"]
   then
