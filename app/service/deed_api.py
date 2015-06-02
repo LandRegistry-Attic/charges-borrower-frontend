@@ -14,7 +14,7 @@ def get_borrowers(ids):
 
     def with_index(borrower, index):
         borrower.index = index
-        return borrower;
+        return borrower
 
     return [with_index(borrower_from_dict(item), idx) for idx, item in enumerate(get_borrowers_json(ids))]
 
