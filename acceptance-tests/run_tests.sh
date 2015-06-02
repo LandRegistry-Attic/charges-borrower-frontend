@@ -6,13 +6,15 @@
 
 #!/bin/bash
 
+currentLocation="$(cd "$(dirname "$0")"; pwd)"
+
 set -e
 
 ### Remove any test failure screenshots from previous runs.
 rm -f sshot*
 
 ### Installs any gems specified in the gemfile.
-bundle install
+bundle install --gemfile=$currentlocation/Gemfile
 
 if [ -z "$1"]
   then
