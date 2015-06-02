@@ -7,6 +7,7 @@
 #!/bin/bash
 
 currentLocation="$(cd "$(dirname "$0")"; pwd)"
+gemfile=$currentLocation/Gemfile
 
 set -e
 
@@ -14,13 +15,13 @@ set -e
 rm -f sshot*
 
 ### Installs any gems specified in the gemfile.
-bundle install --gemfile=$currentLocation/Gemfile
+BUNDLE_GEMFILE=$gemfile bundle install
 
 if [ -z "$1"]
   then
   ### If no arguments supplied when running this script then execute the following code.
-  cucumber $currentLocation --tags ~@wip
+  BUNDLE_GEMFILE=$gemfile bundle exec cucumber $currentLocation --tags ~@wip
 else
   ### If arguments are supplied when running this script then depending on the arguments execute the following code.
-  cucumber $currentLocation $1
+  BUNDLE_GEMFILE=$gemfile bundle exec cucumber $currentLocation $1
 fi
