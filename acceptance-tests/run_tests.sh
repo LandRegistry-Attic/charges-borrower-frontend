@@ -19,8 +19,8 @@ bundle install --gemfile=$currentLocation/Gemfile
 if [ -z "$1"]
   then
   ### If no arguments supplied when running this script then execute the following code.
-  cucumber --tags ~@wip
+  cucumber $currentLocation --tags ~@wip
 else
   ### If arguments are supplied when running this script then depending on the arguments execute the following code.
-  cucumber $1
+  cucumber $currentLocation $1
 fi
