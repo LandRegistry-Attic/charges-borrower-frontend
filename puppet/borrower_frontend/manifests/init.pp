@@ -45,7 +45,7 @@ class borrower_frontend (
     mode   => '0755',
     owner  => $owner,
     group  => $group,
-    source => "puppet:///modules/${module_name}/borrower_frontend.initd",
+    source => "puppet:///modules/${module_name}/service.initd",
   }
   file { '/etc/systemd/system/borrower_frontend.service':
     ensure  => 'file',
