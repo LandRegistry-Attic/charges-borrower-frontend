@@ -12,3 +12,4 @@ test-reports/
 .librarian
 .tmp
 .idea/*
+/acceptance-tests/Gemfile.lock
