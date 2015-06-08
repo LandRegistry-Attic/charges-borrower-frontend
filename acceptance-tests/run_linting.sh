@@ -3,10 +3,11 @@
 ### folder such as Rubocop.                                                                   ###
 #################################################################################################
 
-set -e
-
 ### Installs any gems specified in the gemfile.
 bundle install
 
 ### Run rubocop gem to check acceptance tests against the Ruby style guide.
-rubocop -c rubocop.yml
+### Will fail with exit code if any errors are raised
+bundle exec rubocop -c rubocop.yml
+
+exit $?
