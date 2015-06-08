@@ -1,6 +1,6 @@
 Given(/^I navigate to the view mortgage deed page$/) do
   visit("#{$CHARGES_URL}/deed/view?deedRefNum=1")
-  end
+end
 
 When(/^I click the Sign deed button$/) do
   click_button('Sign the deed')
