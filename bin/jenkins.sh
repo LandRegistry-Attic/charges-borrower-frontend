@@ -26,4 +26,4 @@ test_pass=$?
 coverage xml
 coverage -rm
 
-exit ($test_pass + $rubocop)
+exit $(($test_pass + $rubocop))
