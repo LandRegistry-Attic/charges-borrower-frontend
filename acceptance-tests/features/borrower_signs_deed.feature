@@ -6,10 +6,9 @@ Feature: Borrower Signs the Deed
     So that the mortgage company will release the money
 
 Acceptance criteria
-- Borrower can sign the deed (mock)
-- Once the borrower signs the deed the confirmation page is displayed
- - user can enter name into name field
-
+    - Borrower can sign the deed (mock)
+    - Once the borrower signs the deed the confirmation page is displayed
+    - user can enter name into name field
 
 Scenario: Borrower signs mortgage deed
     Given I navigate to the view mortgage deed page
