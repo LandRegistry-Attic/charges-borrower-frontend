@@ -6,14 +6,14 @@ Feature: Borrower Views the Deed
     So that I can view it
 
 Acceptance Criteria:
-    When I search using the correct reference number the deed displays.
-    It must display:
+    -When I search using the correct reference number the deed displays.
+    -It must display:
       - property description
       - borrower's name and address
       - lender's name  (not address)
       - charging clause
       - additional provisions
-    Incorrect reference number returns  - error message (new page).
+    -Incorrect reference number returns  - error message (new page).
 
 Background:
     Given I navigate to the deed search page
