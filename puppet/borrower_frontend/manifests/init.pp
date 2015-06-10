@@ -45,14 +45,14 @@ class borrower_frontend (
     mode   => '0755',
     owner  => $owner,
     group  => $group,
-    source => "puppet:///modules/${module_name}/borrower_frontend.initd",
+    source => "puppet:///modules/${module_name}/service.initd",
   }
   file { '/etc/systemd/system/borrower_frontend.service':
     ensure  => 'file',
     mode    => '0755',
     owner   => $owner,
     group   => $group,
-    content => template("${module_name}/borrower_frontend_service.erb"),
+    content => template("${module_name}/service.systemd.erb"),
     notify  => [Exec['systemctl-daemon-reload'], Service['borrower_frontend']],
   }
   service { 'borrower_frontend':
