@@ -32,3 +32,5 @@ coverage xml
 coverage -rm
 
 e_code=$((test_pass + rubocop + python_linting))
+
+exit $e_code
