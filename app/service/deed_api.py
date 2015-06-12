@@ -43,8 +43,8 @@ def get_address(address_json):
 def get_borrowers_json(ids):
     borrowers = []
     for borrower_id in ids:
-        response = requests.get
-        (DEED_API_BASE_HOST + '/borrower/' + str(borrower_id))
+        endpoint_address = DEED_API_BASE_HOST + '/borrower/' + str(borrower_id)
+        response = requests.get(endpoint_address)
         if response.status_code == 200:
             borrowers.append(response.json())
     return borrowers
