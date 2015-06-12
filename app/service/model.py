@@ -18,8 +18,10 @@ class Lender:
         self.address = address
         self.company_no = company_no
 
+
 class Address:
-    def __init__(self, street_address, extended_address, locality, postal_code):
+    def __init__(self, street_address, extended_address,
+                 locality, postal_code):
         self.street_address = street_address
         self.extended_address = extended_address
         self.locality = locality
