@@ -1,5 +1,9 @@
-Given(/^I navigate to the deed search page$/) do
-  visit("#{$CHARGES_URL}/deed/search")
+Given(/^a mortgage deed has been created$/) do
+  puts create_deed_data
+end
+
+And(/^I navigate to the deed search page$/) do
+  visit("#{$BORROWER_FRONTEND_URL}/deed/search")
 end
 
 When(/^I search for a deed with reference "([^"]*)"$/) do |arg1|

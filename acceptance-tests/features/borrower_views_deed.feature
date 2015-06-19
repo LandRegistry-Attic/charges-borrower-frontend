@@ -16,7 +16,8 @@ Acceptance Criteria:
     -Incorrect reference number returns  - error message (new page).
 
 Background:
-    Given I navigate to the deed search page
+    Given a mortgage deed has been created
+    And I navigate to the deed search page
 
 Scenario: Borrower enters a valid mortgage reference number
     When I search for a deed with reference "1"
