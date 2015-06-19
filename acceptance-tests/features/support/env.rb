@@ -4,5 +4,5 @@
 ### need to change every test when switching environments for example.       ###
 ################################################################################
 
-$HELLOWORLD_DOMAIN = (ENV['HELLOWORLD_DOMAIN'] || 'http://localhost:5000')
-$CHARGES_URL = (ENV['CHARGES_URL'] || 'http://0.0.0.0:5000')
+$BORROWER_FRONTEND_URL = (ENV['BORROWER_FRONTEND_URL'] || 'http://0.0.0.0:5000')
+$DEED_API_URL = (ENV['DEED_API_URL'] || 'http://0.0.0.0:5050')
