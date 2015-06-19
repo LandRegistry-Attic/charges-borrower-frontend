@@ -44,6 +44,7 @@ class DeedApiMockClient:
                     "postal-code": "",
                 },
                 "company-no": "2347676",
-            }}
+            },
+        }
 
         return MockJsonResponse(deed)
