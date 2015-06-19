@@ -4,10 +4,10 @@ from app.views.template import Template
 class View(Template):
     pageTitle = "Sign your mortgage deed"
 
-    def __init__(self, borrowers, lender, land_property):
-        self.borrowers = borrowers
-        self.lender = lender
-        self.land_property = land_property
+    def __init__(self, deed):
+        self.borrowers = deed.borrowers
+        self.lender = deed.lender
+        self.land_property = deed.land_property
 
 
 class NotFound(Template):

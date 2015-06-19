@@ -11,5 +11,5 @@ def register_routes(blueprint):
     @blueprint.route('/deed/search', methods=['POST'])
     def redirect_to_view_deed():
         deed_ref_num = request.form['deedRefNumber']
-        return redirect(url_for('deed.view.view_deed',
-                        deedRefNum=deed_ref_num), code=303)
+        url = url_for('deed.view.view_deed', deedRefNum=deed_ref_num)
+        return redirect(url, code=303)

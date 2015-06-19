@@ -3,7 +3,6 @@ from flask import redirect, url_for
 
 
 def register_routes(blueprint):
-
     @blueprint.route('/deed/sign/confirmation', methods=['GET'])
     def confirmation():
         return views.Confirmation().render()

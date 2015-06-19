@@ -1,60 +1,44 @@
-from app import config
-from app.service.model import Borrower, LandProperty, Lender, Address
-import requests
-
-DEED_API_BASE_HOST = config.DEED_API_BASE_HOST
-
-
-def get_borrowers(ids):
-    def borrower_from_dict(borrower):
-        return Borrower(borrower.get('forename'),
-                        borrower.get('surname'),
-                        borrower.get('middle'),
-                        get_address(borrower.get('address')))
-
-    def with_index(borrower, index):
-        borrower.index = index
-        return borrower
-
-    return [with_index(borrower_from_dict(item), idx) for idx, item in
-            enumerate(get_borrowers_json(ids))]
+from pydoc import locate
+from flask import current_app
+from app.service.model import Deed, Borrower, LandProperty, Lender, Address
+from functools import lru_cache
 
 
-def get_lender():
-    lender = get_lender_json()
-    return Lender(lender.get('name'),
-                  get_address(lender.get('address')),
-                  lender.get('company-no'))
+@lru_cache(maxsize=None)
+def get_deed_client():
+    return locate(current_app.config['DEED_CLIENT'])
 
 
-def get_land_property():
-    land_property = get_property_json()
-    return LandProperty(get_address(land_property.get('address')),
-                        land_property.get('property-title-no'))
+def get_deed(md_ref):
+    def borrowers_from_json(borrowers_json):
+        def borrower_from_dict(borrower):
+            return Borrower(borrower['forename'],
+                            borrower['surname'],
+                            borrower['middle'],
+                            address_from_json(borrower['address']))
 
+        return [borrower_from_dict(item) for item in borrowers_json]
 
-def get_address(address_json):
-    return Address(address_json.get('street-address'),
-                   address_json.get('extended-address'),
-                   address_json.get('locality'),
-                   address_json.get('postal-code'))
+    def lender_from_json(lender_json):
+        return Lender(lender_json['name'],
+                      address_from_json(lender_json['address']),
+                      lender_json['company-no'])
 
+    def property_from_json(property_json):
+        return LandProperty(address_from_json(property_json['address']),
+                            property_json['property-title-no'])
 
-def get_borrowers_json(ids):
-    borrowers = []
-    for borrower_id in ids:
-        endpoint_address = DEED_API_BASE_HOST + '/borrower/' + str(borrower_id)
-        response = requests.get(endpoint_address)
-        if response.status_code == 200:
-            borrowers.append(response.json())
-    return borrowers
+    def address_from_json(address_json):
+        return Address(address_json['street-address'],
+                       address_json['extended-address'],
+                       address_json['locality'],
+                       address_json['postal-code'])
 
+    def deed_from_json(deed_json):
+        return Deed(borrowers_from_json(deed_json['borrowers']),
+                    lender_from_json(deed_json['lender']),
+                    property_from_json(deed_json['property']))
 
-def get_lender_json():
-    response = requests.get(DEED_API_BASE_HOST + '/lender')
-    return response.json()
+    deed_json = get_deed_client().get_deed(md_ref).json()
 
-
-def get_property_json():
-    response = requests.get(DEED_API_BASE_HOST + '/property')
-    return response.json()
+    return deed_from_json(deed_json)

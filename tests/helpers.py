@@ -8,6 +8,7 @@ def with_context(test):
         with self.app.app_context():
             with self.app.test_request_context():
                 test(self)
+
     return _wrapped_test
 
 
@@ -16,6 +17,7 @@ def with_client(test):
     def _wrapped_test(self):
         with self.app.test_client() as client:
             test(self, client)
+
     return _wrapped_test
 
 
@@ -24,3 +26,5 @@ def setUpApp(self):
     self.app = manager.app
     self.manager = manager
     self.app.config['TESTING'] = True
+    self.app.config['DEED_CLIENT'] = \
+        'tests.mock.deed_api_mock_client.DeedApiMockClient'
