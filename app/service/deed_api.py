@@ -16,7 +16,8 @@ def get_borrowers(ids):
         borrower.index = index
         return borrower
 
-    return [with_index(borrower_from_dict(item), idx) for idx, item in enumerate(get_borrowers_json(ids))]
+    return [with_index(borrower_from_dict(item), idx) for idx, item
+            in enumerate(get_borrowers_json(ids))]
 
 
 def get_lender():
@@ -42,7 +43,8 @@ def get_address(address_json):
 def get_borrowers_json(ids):
     borrowers = []
     for borrower_id in ids:
-        response = requests.get(DEED_API_BASE_HOST + '/borrower/' + str(borrower_id))
+        response = requests.get(
+            DEED_API_BASE_HOST + '/borrower/' + str(borrower_id))
         if response.status_code == 200:
             borrowers.append(response.json())
     return borrowers
