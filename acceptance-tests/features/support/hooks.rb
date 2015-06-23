@@ -5,14 +5,15 @@
 ### authentication for the app before running the tests.                     ###
 ################################################################################
 
-### Code that should be executed before the acceptance tests have run.
+### Code that is executed before the acceptance tests have run.
 Before do
 end
 
-### Code that should be executed once all of the acceptance tests have run.
+### Code that is executed after acceptance tests for each feature have run
 After do |scenario|
-  ### If an acceptance test scenario has failed then take a screenshot to
-  ### record where in the scenario it occured.
-
+  ### If an acceptance test scenario has failed then take a screenshot
   save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
+  ### Delete any test data that has been created for this feature
+  puts 'Deleting test data...'
+  puts delete_deed_data
 end
