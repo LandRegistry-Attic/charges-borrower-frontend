@@ -8,8 +8,8 @@
           "street-address": "65 Highrise Road",
           "extended-address": "",
           "locality": "Plymouth",
-          "postal-code": "PL7 6YH",
-      },
+          "postal-code": "PL7 6YH"
+      }
   }, {
       "forename": "Amanda",
       "middle": "Jane",
@@ -18,8 +18,8 @@
           "street-address": "39 Ladyship Street",
           "extended-address": "",
           "locality": "Torquay",
-          "postal-code": "TQ6 5TG",
-      },
+          "postal-code": "TQ6 5TG"
+      }
   }],
   "property": {
       "address": {
@@ -27,9 +27,9 @@
           "extended-address": "98 Highrise Road",
           "extended-address": "Estover",
           "locality": "Plymouth",
-          "postal-code": "PL9 8YH",
+          "postal-code": "PL9 8YH"
       },
-      "property-title-no": "387659",
+      "property-title-no": "387659"
   },
   "lender": {
       "name": "plymouth Bank",
@@ -37,9 +37,9 @@
           "street-address": "45 Plymouth Place",
           "extended-address": "Plymouth Street",
           "locality": "Plymouth",
-          "postal-code": "PL9 8YE",
+          "postal-code": "PL9 8YE"
       },
-      "company-no": "44456787",
+      "company-no": "44456787"
     },
     "charging-clause": "You, the borrower, with full title guarantee, charge property to the lender by way of legal mortgage with the payment of all money secured by this charge.",
     "additional-provisions": [

@@ -8,17 +8,17 @@
           "street-address": "87 The Big Estate",
           "extended-address": "Riley",
           "locality": "Birmingham",
-          "postal-code": "BH6 4RF",
-      },
+          "postal-code": "BH6 4RF"
+      }
   }],
   "property": {
       "address": {
           "street-address": "Flat 4a",
           "extended-address": "",
           "locality": "Flatley",
-          "postal-code": "BH18 6TG",
+          "postal-code": "BH18 6TG"
       },
-      "property-title-no": "GHR67832",
+      "property-title-no": "GHR67832"
   },
   "lender": {
       "name": "Happy lending bank",
@@ -26,9 +26,9 @@
           "street-address": "125b Lower Road",
           "extended-address": "",
           "locality": "Birmingham",
-          "postal-code": "BH65 4VG",
+          "postal-code": "BH65 4VG"
       },
-      "company-no": "",
+      "company-no": ""
   },
   "charging-clause": "You, the borrower, with full title guarantee, charge property to the lender by way of legal mortgage with the payment of all money secured by this charge."
 }
