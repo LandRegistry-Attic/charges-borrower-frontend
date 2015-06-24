@@ -14,8 +14,8 @@ def create_deed_data(deed_file)
   #end
 end
 
-def delete_deed_data
-  url = URI.parse($DEED_API_URL + "/deed/" + "1")
+def delete_deed_data(md_ref)
+  url = URI.parse($DEED_API_URL + "/deed/" + md_ref)
   connection = Net::HTTP.new(url.host, url.port)
   request = Net::HTTP::Delete.new(url)
   response = connection.request(request)

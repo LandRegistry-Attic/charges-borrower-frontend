@@ -15,5 +15,5 @@ After do |scenario|
   save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
   ### Delete any test data that has been created for this feature
   puts 'Deleting test data...'
-  puts delete_deed_data
+  puts delete_deed_data("684A")
 end
