@@ -1,7 +1,5 @@
 Given(/^a mortgage deed has been created$/) do
-  data= File.read('./data/deed1.json')
-  jsondata = JSON.parse(data).to_json
-  puts create_deed_data(jsondata)
+  @deed = create_deed_data('deed1')
 end
 
 And(/^I navigate to the deed search page$/) do
