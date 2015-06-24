@@ -1,5 +1,5 @@
 Given(/^a mortgage deed has been created$/) do
-  @deed = create_deed_data('deed1')
+  @deed = create_deed_data('deed_lots_of_provisions')
 end
 
 And(/^I navigate to the deed search page$/) do
