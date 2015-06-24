@@ -10,5 +10,5 @@ Before do
 end
 
 ### Code that should be executed once all of the acceptance tests have run.
-After do |scenario|
+After do
 end
