@@ -1,9 +1,8 @@
 from app.deed.view import views
-from app.service import deed_api
 from flask import request, redirect, url_for
 
 
-def register_routes(blueprint):
+def register_routes(blueprint, deed_api):
 
     @blueprint.route('/deed/view')
     def view_deed():

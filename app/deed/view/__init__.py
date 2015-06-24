@@ -1,5 +1,8 @@
 from flask import Blueprint
 from . import routes
 
-blueprint = Blueprint('deed.view', __name__)
-routes.register_routes(blueprint)
+
+def blueprint(deed_api_client):
+    blueprint = Blueprint('deed.view', __name__)
+    routes.register_routes(blueprint, deed_api_client)
+    return blueprint
