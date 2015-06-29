@@ -10,18 +10,22 @@
 
         <p itemscope="" itemtype="http://schema.org/PostalAddress">
             <span id="property-address" itemprop="streetAddress">
-                {{land_property.address.street_address}}<br>
-                {{land_property.address.extended_address}}<br>
+                {{deed.land_property.address.street_address}}<br>
+                {{deed.land_property.address.extended_address}}<br>
             </span>
-            <span itemprop="addressLocality">{{land_property.address.locality}}</span><br>
+            <span itemprop="addressLocality">{{deed.land_property.address.locality}}</span><br>
         </p>
 
         <dl class="definition-inline">
             <dt>Title number</dt>
-            <dd id="title-number">{{land_property.title_no}}</dd>
+            <dd id="title-number">{{deed.land_property.title_no}}</dd>
         </dl>
     </div>
+    <div class="text">
+    <h3 class="heading-small">Effective date and time:</h3>
 
+    <p>{{deed.effective_clause}}</p>
+  </div>
     <div>
         <div>
             <h2 class="heading-medium">Lender:</h2>
@@ -29,22 +33,22 @@
 
         <p itemscope="" itemtype="http://schema.org/Corporation">
             <span id="lender-name" itemprop="name">
-                {{lender.name}}
+                {{deed.lender.name}}
             </span>
             <br>
             <span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress" class="address-inline">
                 <span itemprop="streetAddress">
-                    {{lender.address.street_address}}, {{lender.address.extended_address}},
+                    {{deed.lender.address.street_address}}, {{deed.lender.address.extended_address}},
                 </span>
                 <span itemprop="addressLocality">
-                    {{lender.locality}}
+                    {{deed.lender.locality}}
                 </span>
             </span>
         </p>
 
         <dl class="definition-inline">
             <dt>Company registration number</dt>
-            <dd>{{lender.company_no}}</dd>
+            <dd>{{deed.lender.company_no}}</dd>
         </dl>
     </div>
 
@@ -54,7 +58,7 @@
         <h3 class="heading-medium">Borrowers:</h3>
 
         <div class="grid-row">
-            {{#borrowers}}
+            {{#deed.borrowers}}
                 <div class="column-third">
                     <p>
                         <span id='borrower-name-{{index}}'>
@@ -68,39 +72,34 @@
                         </span>
                     </p>
                 </div>
-            {{/borrowers}}
+            {{/deed.borrowers}}
         </div>
     </div>
 
     <div class="text" id="clauses-and-provisions">
         <h3 id="charging-clause" class="heading-small">Charging clause:</h3>
+                <p>{{deed.charging_clause}}</p>
+            {{#deed.has_restriction}}
+          <h3 id="restrictions" class="heading-small">Restrictions:</h3>
+          <ul class="list-bullet">
 
-        <p>You, the borrower, with full title guarantee, charge property to the lender by way of legal mortgage with the
-            payment of all money secured by this charge.</p>
-
+                  {{#deed.restrictions}}
+                      <li>{{.}}</li>
+                    {{/deed.restrictions}}
+          </ul>
+            {{/deed.has_restriction}}
+{{#deed.has_provision}}
         <h3 id="additional-provisions" class="heading-small">Additional provisions:</h3>
         <ul class="list-bullet">
-            <li>
-                <p>This Mortgage Deed incorporates the <a href="#" rel="external">Lenders Mortgage Conditions and
-                    Explanation 2006</a>, a copy of which has been received by the Borrower.</p>
-            </li>
-            <li>
-                <p>The lender is under an obligation to make further advances and applies for the obligation to be
-                    entered in the register.</p>
-            </li>
-            <li>
-                <p>No disposition of the registered estate by the proprietor of the registered estate is to be
-                    registered without a written consent signed by Bank of England Plc.</p>
-            </li>
+          {{#deed.provisions}}
+              <li>{{.}}</li>
+            {{/deed.provisions}}
+
         </ul>
+        {{/deed.has_provision}}
     </div>
 
     <div class="text">
-        <h3 class="heading-small">Effective date and time:</h3>
-
-        <p>This charge takes effect when the registrar receives notification from Bailey &amp; Co Solicitors, who
-            prepared this charge. The effective date and time is applied by the registrar on completion.</p>
-
         <div class="deed-document--divider">
             <p class="font-xsmall">Mortgage deed reference MD859K.</p>
         </div>

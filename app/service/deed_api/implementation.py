@@ -33,12 +33,28 @@ def get_deed(md_ref):
                        address_json['locality'],
                        address_json['postal-code'])
 
+    def charging_clause_from_json(operative_deed):
+        return operative_deed['charging-clause']
+
+    def restrictions_from_json(operative_deed):
+        return operative_deed['restrictions']
+
+    def provisions_from_json(operative_deed):
+        return operative_deed['provisions']
+
+    def effective_clause_from_json(operative_deed):
+        return operative_deed['effective-clause']
+
     def deed_from_json(deed_json):
         operative_deed = deed_json['deed']['operative-deed']
 
         return Deed(borrowers_from_json(operative_deed['borrowers']),
                     lender_from_json(operative_deed['lender']),
-                    title_from_json(operative_deed['title']))
+                    title_from_json(operative_deed['title']),
+                    charging_clause_from_json(operative_deed),
+                    restrictions_from_json(operative_deed),
+                    provisions_from_json(operative_deed),
+                    effective_clause_from_json(operative_deed))
 
     deed_json = get_deed_json(md_ref)
 
