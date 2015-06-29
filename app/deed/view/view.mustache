@@ -80,7 +80,7 @@
         <h3 id="charging-clause" class="heading-small">Charging clause:</h3>
 
         <p>{{deed.charging_clause}}</p>
-        {{#deed.has_restriction}}
+        {{#has_restriction}}
             <h3 id="restrictions" class="heading-small">Restrictions:</h3>
             <ul class="list-bullet">
 
@@ -88,8 +88,8 @@
                     <li>{{.}}</li>
                 {{/deed.restrictions}}
             </ul>
-        {{/deed.has_restriction}}
-        {{#deed.has_provision}}
+        {{/has_restriction}}
+        {{#has_provision}}
             <h3 id="additional-provisions" class="heading-small">Additional provisions:</h3>
             <ul class="list-bullet">
                 {{#deed.provisions}}
@@ -97,7 +97,7 @@
                 {{/deed.provisions}}
 
             </ul>
-        {{/deed.has_provision}}
+        {{/has_provision}}
     </div>
 
     <div class="text">

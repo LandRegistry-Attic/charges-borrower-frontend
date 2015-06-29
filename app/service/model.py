@@ -1,6 +1,6 @@
 class Deed:
     def __init__(self, borrowers, lender, land_property,
-                 charging_clause, restrictions, provisions,effective_clause):
+                 charging_clause, restrictions, provisions, effective_clause):
         self.borrowers = borrowers
         self.lender = lender
         self.land_property = land_property
@@ -8,12 +8,6 @@ class Deed:
         self.restrictions = restrictions
         self.provisions = provisions
         self.effective_clause = effective_clause
-
-    def has_restriction(self):
-        return bool(self.restrictions)
-
-    def has_provision(self):
-        return bool(self.provisions)
 
 
 class Borrower:
