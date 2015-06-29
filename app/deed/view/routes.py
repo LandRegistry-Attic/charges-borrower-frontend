@@ -7,7 +7,6 @@ def register_routes(blueprint, deed_api):
     def view_deed():
         deed_ref_num = request.args.get('deedRefNum')
         deed = deed_api.get_deed(deed_ref_num)
-        print("@@@@@@@@@@@@@@@@ " + str(deed))
         return views.View(deed).render()
 
     @blueprint.route('/deed/not_found')
