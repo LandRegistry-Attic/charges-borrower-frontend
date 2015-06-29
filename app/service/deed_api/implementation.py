@@ -1,12 +1,13 @@
-from pydoc import locate
-from flask import current_app
-from app.service.model import Deed, Borrower, LandProperty, Lender, Address
-from functools import lru_cache
+import requests
+
+from app import config
+from app.service.model import Borrower, LandProperty, Lender, Address, Deed
+
+DEED_API_BASE_HOST = config.DEED_API_BASE_HOST
 
 
-@lru_cache(maxsize=None)
-def get_deed_client():
-    return locate(current_app.config['DEED_CLIENT'])
+def get_deed_json(md_ref):
+    return requests.get(DEED_API_BASE_HOST + '/deed/' + str(md_ref)).json()
 
 
 def get_deed(md_ref):
@@ -39,6 +40,6 @@ def get_deed(md_ref):
                     lender_from_json(deed_json['lender']),
                     property_from_json(deed_json['property']))
 
-    deed_json = get_deed_client().get_deed(md_ref).json()
+    deed_json = get_deed_json(md_ref)
 
     return deed_from_json(deed_json)
