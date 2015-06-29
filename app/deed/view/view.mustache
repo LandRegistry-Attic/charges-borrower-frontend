@@ -22,10 +22,10 @@
         </dl>
     </div>
     <div class="text">
-    <h3 class="heading-small">Effective date and time:</h3>
+        <h3 class="heading-small">Effective date and time:</h3>
 
-    <p>{{deed.effective_clause}}</p>
-  </div>
+        <p>{{deed.effective_clause}}</p>
+    </div>
     <div>
         <div>
             <h2 class="heading-medium">Lender:</h2>
@@ -78,24 +78,25 @@
 
     <div class="text" id="clauses-and-provisions">
         <h3 id="charging-clause" class="heading-small">Charging clause:</h3>
-                <p>{{deed.charging_clause}}</p>
-            {{#deed.has_restriction}}
-          <h3 id="restrictions" class="heading-small">Restrictions:</h3>
-          <ul class="list-bullet">
 
-                  {{#deed.restrictions}}
-                      <li>{{.}}</li>
-                    {{/deed.restrictions}}
-          </ul>
-            {{/deed.has_restriction}}
-{{#deed.has_provision}}
-        <h3 id="additional-provisions" class="heading-small">Additional provisions:</h3>
-        <ul class="list-bullet">
-          {{#deed.provisions}}
-              <li>{{.}}</li>
-            {{/deed.provisions}}
+        <p>{{deed.charging_clause}}</p>
+        {{#deed.has_restriction}}
+            <h3 id="restrictions" class="heading-small">Restrictions:</h3>
+            <ul class="list-bullet">
 
-        </ul>
+                {{#deed.restrictions}}
+                    <li>{{.}}</li>
+                {{/deed.restrictions}}
+            </ul>
+        {{/deed.has_restriction}}
+        {{#deed.has_provision}}
+            <h3 id="additional-provisions" class="heading-small">Additional provisions:</h3>
+            <ul class="list-bullet">
+                {{#deed.provisions}}
+                    <li>{{.}}</li>
+                {{/deed.provisions}}
+
+            </ul>
         {{/deed.has_provision}}
     </div>
 
