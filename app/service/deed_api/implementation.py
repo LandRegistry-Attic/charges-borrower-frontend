@@ -13,9 +13,7 @@ def get_deed_json(md_ref):
 def get_deed(md_ref):
     def borrowers_from_json(borrowers_json):
         def borrower_from_dict(borrower):
-            return Borrower(borrower['forename'],
-                            borrower['surname'],
-                            borrower['middle'],
+            return Borrower(borrower['name'],
                             address_from_json(borrower['address']))
 
         return [borrower_from_dict(item) for item in borrowers_json]
@@ -23,11 +21,11 @@ def get_deed(md_ref):
     def lender_from_json(lender_json):
         return Lender(lender_json['name'],
                       address_from_json(lender_json['address']),
-                      lender_json['company-no'])
+                      lender_json['company-number'])
 
-    def property_from_json(property_json):
-        return LandProperty(address_from_json(property_json['address']),
-                            property_json['property-title-no'])
+    def title_from_json(title_json):
+        return LandProperty(address_from_json(title_json['address']),
+                            title_json['title-number'])
 
     def address_from_json(address_json):
         return Address(address_json['street-address'],
@@ -36,9 +34,11 @@ def get_deed(md_ref):
                        address_json['postal-code'])
 
     def deed_from_json(deed_json):
-        return Deed(borrowers_from_json(deed_json['borrowers']),
-                    lender_from_json(deed_json['lender']),
-                    property_from_json(deed_json['property']))
+        operative_deed = deed_json['deed']['operative-deed']
+
+        return Deed(borrowers_from_json(operative_deed['borrowers']),
+                    lender_from_json(operative_deed['lender']),
+                    title_from_json(operative_deed['title']))
 
     deed_json = get_deed_json(md_ref)
 

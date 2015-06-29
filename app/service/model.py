@@ -6,10 +6,8 @@ class Deed:
 
 
 class Borrower:
-    def __init__(self, forename, surname, middle_name, address):
-        self.forename = forename
-        self.surname = surname
-        self.middle_name = middle_name
+    def __init__(self, name, address):
+        self.name = name
         self.address = address
 
 
