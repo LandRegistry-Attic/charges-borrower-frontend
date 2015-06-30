@@ -59,12 +59,12 @@
 
         <div class="grid-row">
             {{#deed.borrowers}}
-                <div class="column-third">
+                <div class="column-third borrower">
                     <p>
-                        <span id='borrower-name-{{index}}'>
+                        <span class='borrower-name'>
                             <b>{{name}}</b>
                         </span><br>
-                        <span id="borrower-address-{{index}}">
+                        <span class="borrower-address">
                         {{address.street_address}}<br>
                             {{address.extended_address}}<br>
                             {{address.locality}}<br>

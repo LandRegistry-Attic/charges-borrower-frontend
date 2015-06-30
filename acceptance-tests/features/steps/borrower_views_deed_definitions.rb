@@ -20,7 +20,7 @@ Then(/^the property address appears on the page$/) do
 end
 
 Then(/^the borrower name appears on the page$/) do
-  assert_selector("//*[@id='borrower-name-0']", text: 'Peter Smith')
+  assert_selector("//span[@class='borrower-name']", text: 'Peter Smith')
 end
 
 Then(/^the borrower address appears on the page$/) do
