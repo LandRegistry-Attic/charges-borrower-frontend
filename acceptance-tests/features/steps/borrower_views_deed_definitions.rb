@@ -24,7 +24,7 @@ Then(/^the borrower name appears on the page$/) do
 end
 
 Then(/^the borrower address appears on the page$/) do
-  assert_selector("//*[@id='borrower-address-0']",
+  assert_selector("//span[@class='borrower-address']",
                   text: 'Flat 16 Kingman Court')
 end
 
@@ -44,10 +44,6 @@ Then(/^the additional provisions appear on the page$/) do
                   text: 'This Mortgage Deed incorporates the Lenders Mortgage'\
                   ' Conditions and Explanation 2006, a copy of which has been'\
                   ' received by the Borrower.')
-  assert_selector("//*[@id='clauses-and-provisions']/*",
-                  text: 'The lender is under an obligation to make further'\
-                  ' advances and applies for the obligation to be entered in'\
-                  ' the register.')
   assert_selector("//*[@id='clauses-and-provisions']/*",
                   text: 'No disposition of the registered estate by the'\
                   ' proprietor of the registered estate is to be registered'\
