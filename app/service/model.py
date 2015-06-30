@@ -1,8 +1,18 @@
+class Deed:
+    def __init__(self, borrowers, lender, land_property,
+                 charging_clause, restrictions, provisions, effective_clause):
+        self.borrowers = borrowers
+        self.lender = lender
+        self.land_property = land_property
+        self.charging_clause = charging_clause
+        self.restrictions = restrictions
+        self.provisions = provisions
+        self.effective_clause = effective_clause
+
+
 class Borrower:
-    def __init__(self, forename, surname, middle_name, address):
-        self.forename = forename
-        self.surname = surname
-        self.middle_name = middle_name
+    def __init__(self, name, address):
+        self.name = name
         self.address = address
 
 
@@ -20,9 +30,8 @@ class Lender:
 
 
 class Address:
-    def __init__(self, street_address, extended_address,
-                 locality, postal_code):
-        self.street_address = street_address
-        self.extended_address = extended_address
+    def __init__(self, street, extended, locality, postal_code):
+        self.street_address = street
+        self.extended_address = extended
         self.locality = locality
         self.postal_code = postal_code
