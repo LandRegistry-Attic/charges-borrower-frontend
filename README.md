@@ -3,7 +3,48 @@
 The Borrower Frontend provides a website for Borrower to view and sign their
 mortgage deeds online.
 
-## Testing
+## Contents
+- [Usage](#usage)
+- [Getting Started](#getting-started)
+- [Testing](#testing)
+
+## Usage
+```
+GET     /helloworld
+GET     /deed/search
+POST    /deed/search
+GET     /deed/sign/confirmation
+POST    /deed/sign
+GET     /deed/view
+GET     /deed/not_found
+```
+
+## Getting started
+
+Get the git submodules
+```
+git submodule init
+git submodule update
+```
+
+Install the requirements
+```
+pip install -r requirements.txt
+pip install -r requirements_test.txt
+```
+
+Run the unit tests
+```
+python tests.py
+```
+
+Run the app
+```
+python run.py runserver
+```
+> optional ```-p 9000``` where 9000 is the number of a port you can supply to start the server on.
+
+## Acceptance Tests
 
 ### Running the Tests
 
