@@ -33,6 +33,12 @@ pip install -r requirements.txt
 pip install -r requirements_test.txt
 ```
 
+Optional: export variable for deed-api
+```
+export DEED_API_BASE_HOST=http://localhost:8000
+```
+> default is localhost:5050
+
 Run the unit tests
 ```
 python tests.py
