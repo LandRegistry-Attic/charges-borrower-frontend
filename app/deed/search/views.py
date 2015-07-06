@@ -2,7 +2,7 @@ from app.views.template import Template
 
 
 class Search(Template):
-    pageTitle = "Search deed"
+    pageTitle = "Find your deed"
 
 
 class Start(Template):
