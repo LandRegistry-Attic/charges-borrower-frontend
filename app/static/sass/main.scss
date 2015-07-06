@@ -1,7 +1,12 @@
 @import "layout";
 @import "forms";
 @import "land_registry";
+@import 'design-patterns/buttons';
 
-main {
-  @extend %site-width-container;
+ main {
+   @extend %site-width-container;
+ }
+
+.button {
+  @include button;
 }
