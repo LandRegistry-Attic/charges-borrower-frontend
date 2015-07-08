@@ -4,5 +4,7 @@
 ### need to change every test when switching environments for example.       ###
 ################################################################################
 
-$BORROWER_FRONTEND_URL = (ENV['BORROWER_FRONTEND_URL'] || 'http://0.0.0.0:5000')
-$DEED_API_URL = (ENV['DEED_API_URL'] || 'http://0.0.0.0:5050')
+$BORROWER_FRONTEND_URL = (ENV['BORROWER_FRONTEND_URL'] || 'http://0.0.0.0:9000')
+$DEED_API_URL = (ENV['DEED_API_URL'] || 'http://0.0.0.0:9012')
+
+@@TEST_DEEDS = []
