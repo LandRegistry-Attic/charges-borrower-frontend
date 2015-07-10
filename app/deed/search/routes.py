@@ -13,3 +13,7 @@ def register_routes(blueprint):
         deed_ref_num = request.form['deedRefNumber']
         url = url_for('deed.view.view_deed', deedRefNum=deed_ref_num)
         return redirect(url, code=303)
+
+    @blueprint.route('/')
+    def start_page():
+        return views.Start().render()
