@@ -1,5 +1,5 @@
 Given(/^I navigate to the deed search page$/) do
-  visit("#{$CHARGES_URL}/deed/search")
+  visit("#{$BORROWER_FRONTEND_URL}/deed/search")
 end
 
 When(/^I search for a deed with reference "([^"]*)"$/) do |arg1|
