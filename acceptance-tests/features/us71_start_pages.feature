@@ -12,4 +12,4 @@ Acceptance Criteria:
 Scenario: Start Page on Borrower Frontend
   Given I navigate to the borrower frontend "/" page
   When I click on the "Start now" link
-  Then the "Deed search" page is displayed
+  Then the "Search deed" page is displayed

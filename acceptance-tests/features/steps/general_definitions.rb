@@ -1,11 +1,11 @@
 Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
-  pending # Write code here that turns the phrase above into concrete actions
+  visit($BORROWER_FRONTEND_URL + path)
 end
 
 When(/^I click on the "([^"]*)" link$/) do |link_name|
-  pending # Write code here that turns the phrase above into concrete actions
+  click_link(link_name)
 end
 
 Then(/^the "([^"]*)" page is displayed$/) do |page_title|
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content(page_title)
 end

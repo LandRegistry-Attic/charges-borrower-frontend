@@ -22,3 +22,4 @@ end
 ### Configure Assertions so we can add assertions like assert_match() in tests
 require 'test/unit'
 include Test::Unit::Assertions
+require 'rspec'
