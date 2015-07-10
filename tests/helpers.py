@@ -1,6 +1,6 @@
 from functools import wraps
 from app import create_manager
-from tests.mock import deed_api_mock_client
+from tests.mock import mock_clients
 
 
 def with_context(test):
@@ -22,12 +22,17 @@ def with_client(test):
     return _wrapped_test
 
 
-def make_mock_api_client():
-    return deed_api_mock_client.DeedApiMockClient
+def mock_deed_api_client():
+    return mock_clients.DeedApiMockClient
+
+
+def mock_scribe_api_client():
+    return mock_clients.ScribeApiMockClient
 
 
 def setUpApp(self):
-    manager = create_manager(deed_api_client=make_mock_api_client())
+    manager = create_manager(deed_api_client=mock_deed_api_client(),
+                             scribe_api_client=mock_scribe_api_client())
     self.app = manager.app
     self.manager = manager
     self.app.config['TESTING'] = True
