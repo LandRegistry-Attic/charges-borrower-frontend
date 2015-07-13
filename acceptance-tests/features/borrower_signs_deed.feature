@@ -1,4 +1,4 @@
-@US01
+@US29
 
 Feature: Borrower Signs the Deed
     As a Borrower
@@ -8,7 +8,13 @@ Feature: Borrower Signs the Deed
 Acceptance criteria
     - Borrower can sign the deed (mock)
     - Once the borrower signs the deed the confirmation page is displayed
-    - user can enter name into name field
+    - Borrower can enter name into name field
+    - Signed deed is saved to database
+    - Requesting a saved deed from deed API, signature is attached
+    - Signature consists of full name and date signed
+    - Borrower can only sign deed for deed id matching borrower
+
+
 
 Scenario: Borrower signs mortgage deed
     Given I have created the following deed:
@@ -55,3 +61,14 @@ Scenario: Borrower signs mortgage deed
     And I search for the created deed
     When I click on the "Sign the deed" button
     Then the "You have signed the deed" page is displayed
+
+Scenario: Retrieve signed mortgage deed from deed API
+    Given I have signed my mortgage deed
+    When I navigate to the deed API and retrieve the json
+    Then the json includes the signature consisting of full name and date
+    of signature
+
+Scenario: Borrower can only sign deed for deed id matching borrower
+    Given borrower 1 views a deed that is not associated with their id
+    When borrower 1 attempts to sign the deed
+    Then an invalid status code is displayed
