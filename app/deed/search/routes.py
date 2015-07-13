@@ -13,5 +13,5 @@ def register_routes(blueprint):
         url = url_for('deed.view.view_deed', deedRefNum=deed_ref_num)
         response = current_app.make_response(redirect(url, code=303))
         response.set_cookie('borrower_id', value='1')
-        response.set_cookie('deed_id', value='1')
+        response.set_cookie('deed_id', value=deed_ref_num)
         return response
