@@ -15,14 +15,9 @@ pip install -r requirements_test.txt
 #ensure submodules are cloned
 git submodule update --init
 
-./acceptance-tests/run_linting.sh
-
-rubocop=$?
-
 coverage run --source=app tests.py --xml
 
 test_pass=$?
-
 
 ./run_linting.sh
 
@@ -31,6 +26,6 @@ python_linting=$?
 coverage xml
 coverage -rm
 
-e_code=$((test_pass + rubocop + python_linting))
+e_code=$((test_pass + python_linting))
 
 exit $e_code
