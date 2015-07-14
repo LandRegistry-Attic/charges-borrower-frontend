@@ -10,7 +10,7 @@ Then(/^the signing confirmation page is displayed$/) do
   assert_selector(".//*[@id='content']/div/p", text: 'You have signed the deed')
 end
 
-Given(/^I have signed my mortgage deed$/)
+Given(/^I have signed my mortgage deed$/) do
   Given I navigate to the view mortgage deed page
   When I click the Sign deed button
 end
@@ -23,7 +23,7 @@ Then(/^the json includes the signature consisting of full name and date of signa
   JSON.parse(@deed.body)['operative-deed']['signatures'][0]
 end
 
-Given(/^borrower 1 views a deed that is not associated with their id$/)
+Given(/^borrower 1 views a deed that is not associated with their id$/) do
   visit("#{$BORROWER_FRONTEND_URL}/deed/view?deedRefNum=2")
 end
 

@@ -65,8 +65,7 @@ Scenario: Borrower signs mortgage deed
 Scenario: Retrieve signed mortgage deed from deed API
     Given I have signed my mortgage deed
     When I navigate to the deed API and retrieve the json
-    Then the json includes the signature consisting of full name and date
-    of signature
+    Then the json includes the signature consisting of full name and date of signature
 
 Scenario: Borrower can only sign deed for deed id matching borrower
     Given borrower 1 views a deed that is not associated with their id
