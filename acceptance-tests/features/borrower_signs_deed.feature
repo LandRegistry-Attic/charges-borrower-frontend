@@ -59,7 +59,8 @@ Scenario: Borrower signs mortgage deed
     """
     And I navigate to the borrower frontend "/deed/search" page
     And I search for the created deed
-    When I click on the "Sign the deed" button
+    When I enter the name "Peter Smith"
+    And I click on the "Sign the deed" button
     Then the "You have signed the deed" page is displayed
 
 Scenario: Retrieve signed mortgage deed from deed API

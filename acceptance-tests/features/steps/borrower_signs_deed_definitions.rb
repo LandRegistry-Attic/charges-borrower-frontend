@@ -34,3 +34,7 @@ end
 Then(/^an invalid status code is displayed$/) do
   expect(page.status_code.to eq(403))
 end
+
+When(/^I enter the name "([^"]*)"$/) do |name|
+    fill_in('borrowerName', with: name)
+end
