@@ -5,9 +5,6 @@ Feature: Borrower Signs the Deed
     I want to be able to sign my mortgage deed (Mock)
     So that the mortgage company will release the money
 
-    - Signed deed is saved to database
-    - Requesting a saved deed from deed API, signature is attached
-    - Signature consists of full name and date signed
     - Borrower can only sign deed for deed id matching borrower
 
 Background:
@@ -65,9 +62,14 @@ Scenario: Borrower signs mortgage deed
     Then the "You have signed the deed" page is displayed
 
 Scenario: Retrieve signed mortgage deed from deed API
-    Given I have signed my mortgage deed
-    When I navigate to the deed API and retrieve the json
-    Then the json includes the signature consisting of full name and date of signature
+
+    - Signed deed is saved to database
+    - Requesting a saved deed from deed API, signature is attached
+    - Signature consists of full name and date signed
+
+    Given I have signed my mortgage deed as "Peter Smith"
+    When I request deed data from the api
+    Then the deed data includes the signature consisting of full name and date
 
 Scenario: Borrower can only sign deed for deed id matching borrower
     Given borrower 1 views a deed that is not associated with their id
