@@ -5,8 +5,6 @@ Feature: Borrower Signs the Deed
     I want to be able to sign my mortgage deed (Mock)
     So that the mortgage company will release the money
 
-    - Borrower can only sign deed for deed id matching borrower
-
 Background:
     Given I have created the following deed:
     """
@@ -72,6 +70,9 @@ Scenario: Retrieve signed mortgage deed from deed API
     Then the deed data includes the signature consisting of full name and date
 
 Scenario: Borrower can only sign deed for deed id matching borrower
-    Given borrower 1 views a deed that is not associated with their id
-    When borrower 1 attempts to sign the deed
+
+    - Borrower can only sign deed for deed id matching borrower
+
+    Given I view a deed that is not associated with my id
+    When I click on the "Sign the deed" button
     Then an invalid status code is displayed
