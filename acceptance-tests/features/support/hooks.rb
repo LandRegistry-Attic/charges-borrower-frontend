@@ -9,8 +9,10 @@
 Before do
 end
 
-### Code that should be executed once all of the acceptance tests have run.
-After do
+### Code that is executed after acceptance tests for each feature have run
+After do |scenario|
+  ### If an acceptance test scenario has failed then take a screenshot
+  save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
 end
 
 ### Code that is executed after all of the acceptance tests have run
