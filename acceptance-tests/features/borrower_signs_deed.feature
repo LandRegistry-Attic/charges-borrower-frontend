@@ -5,18 +5,12 @@ Feature: Borrower Signs the Deed
     I want to be able to sign my mortgage deed (Mock)
     So that the mortgage company will release the money
 
-Acceptance criteria
-    - Borrower can sign the deed (mock)
-    - Once the borrower signs the deed the confirmation page is displayed
-    - Borrower can enter name into name field
     - Signed deed is saved to database
     - Requesting a saved deed from deed API, signature is attached
     - Signature consists of full name and date signed
     - Borrower can only sign deed for deed id matching borrower
 
-
-
-Scenario: Borrower signs mortgage deed
+Background:
     Given I have created the following deed:
     """
     {
@@ -58,8 +52,15 @@ Scenario: Borrower signs mortgage deed
     }
     """
     And I navigate to the borrower frontend "/deed/search" page
-    And I search for the created deed
-    When I enter the name "Peter Smith"
+
+Scenario: Borrower signs mortgage deed
+
+    - Borrower can sign the deed
+    - Borrower can enter name into name field
+    - Once the borrower signs the deed the confirmation page is displayed
+
+    Given I search for the created deed
+    When I enter the borrowers signature "Peter Smith"
     And I click on the "Sign the deed" button
     Then the "You have signed the deed" page is displayed
 
