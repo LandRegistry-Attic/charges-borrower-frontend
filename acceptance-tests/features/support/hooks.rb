@@ -13,13 +13,13 @@ end
 After do |scenario|
   ### If an acceptance test scenario has failed then take a screenshot
   save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
+  ### If deed test data has been created  for this scenario then delete it
+  if @deed_id
+    puts "Deleting test deed #{@deed_id}..."
+    delete_deed_data(@deed_id)
+  end
 end
 
 ### Code that is executed after all of the acceptance tests have run
 at_exit do
-  ### Delete any deed data that has been created
-  puts 'Deleting deed test data...'
-  @@TEST_DEEDS.each do |deed_id|
-    delete_deed_data(deed_id)
-  end
 end

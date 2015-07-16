@@ -11,7 +11,7 @@ When(/^I enter the borrowers signature "([^"]*)"$/) do |name|
 end
 
 When(/^I request deed data from the api$/) do
-  @deed = HTTP.get($DEED_API_URL + "/deed/" + @@deed_id.to_s)
+  @deed = HTTP.get($DEED_API_URL + "/deed/" + @deed_id.to_s)
 end
 
 Then(/^the deed data includes the signature consisting of full name and date$/) do
