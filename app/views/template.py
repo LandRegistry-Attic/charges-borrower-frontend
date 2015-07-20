@@ -41,7 +41,7 @@ class Base(View):
 class Template (object):
     pageTitle = 'A Blank Page'
     assetPath = '/template/assets/'
-    serviceName = 'Service Name'
+    serviceName = 'Sign your mortgage deed'
     headerClass = 'with-proposition'
 
     def footerSupportLinks(self):

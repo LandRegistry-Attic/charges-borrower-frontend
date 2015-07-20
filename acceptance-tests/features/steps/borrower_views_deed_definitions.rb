@@ -1,56 +1,50 @@
-Given(/^I navigate to the deed search page$/) do
-  visit("#{$CHARGES_URL}/deed/search")
-end
-
-When(/^I search for a deed with reference "([^"]*)"$/) do |arg1|
-  fill_in 'deedRefNumber', with: arg1
+When(/^I search for the created deed$/) do
+  fill_in('deedRefNumber', with: @@deed_id)
   click_button('Search')
 end
 
-Then(/^the Sign your mortgage deed page is displayed$/) do
-  assert_selector(".//*[@id='content']/div/h1", text: 'Sign your mortgage deed')
+When(/^I search for an invalid deed$/) do
+  fill_in('deedRefNumber', with: 0)
+  click_button('Search')
 end
 
-Then(/^the title number appears on the page$/) do
-  assert_selector(".//*[@id='title-number']", text: 'GHR67832')
+Then(/^the property description is displayed on the deed$/) do |property_description|
+  property_description.hashes.each do |property|
+    expect(page).to have_content(property['STREET ADDRESS'])
+    expect(page).to have_content(property['EXTENDED ADDRESS'])
+    expect(page).to have_content(property['LOCALITY'])
+    expect(page).to have_content(property['POSTCODE'])
+  end
 end
 
-Then(/^the property address appears on the page$/) do
-  assert_selector("//*[@id='property-address']", text: 'Flat 16 Kingman Court')
+Then(/^the borrowers are displayed on the deed$/) do |borrowers|
+  borrowers.hashes.each do |borrower|
+    expect(page).to have_content(borrower['BORROWERS'])
+  end
 end
 
-Then(/^the borrower name appears on the page$/) do
-  assert_selector("//span[@class='borrower-name']", text: 'Peter Smith')
+Then(/^the borrower addresses are displayed on the deed$/) do |borrower_addresses|
+  borrower_addresses.hashes.each do |borrower_address|
+    expect(page).to have_content(borrower_address['STREET ADDRESS'])
+    expect(page).to have_content(borrower_address['EXTENDED ADDRESS'])
+    expect(page).to have_content(borrower_address['LOCALITY'])
+    expect(page).to have_content(borrower_address['POSTCODE'])
+  end
 end
 
-Then(/^the borrower address appears on the page$/) do
-  assert_selector("//span[@class='borrower-address']",
-                  text: 'Flat 16 Kingman Court')
+Then(/^the lenders name "([^"]*)" is displayed on the deed$/) do |name|
+  expect(page).to have_content(name)
 end
 
-Then(/^the lender name appears on the page$/) do
-  assert_selector("//*[@id='lender-name']", text: 'Bank of England Plc')
+Then(/^the charging clause is displayed on the deed$/) do
+  expect(page).to have_content('You, the borrower, with full title guarantee, '\
+                              'charge property to the lender by way of legal '\
+                              'mortgage with the payment of all money secured '\
+                              'by this charge.')
 end
 
-Then(/^the charging clause appears on the page$/) do
-  assert_selector("//*[@id='clauses-and-provisions']/*",
-                  text: 'You, the borrower, with full title guarantee, charge'\
-                  ' property to the lender by way of legal mortgage with the'\
-                  ' payment of all money secured by this charge.')
-end
-
-Then(/^the additional provisions appear on the page$/) do
-  assert_selector("//*[@id='clauses-and-provisions']/*",
-                  text: 'This Mortgage Deed incorporates the Lenders Mortgage'\
-                  ' Conditions and Explanation 2006, a copy of which has been'\
-                  ' received by the Borrower.')
-  assert_selector("//*[@id='clauses-and-provisions']/*",
-                  text: 'No disposition of the registered estate by the'\
-                  ' proprietor of the registered estate is to be registered'\
-                  ' without a written consent signed by Bank of England Plc.')
-end
-
-Then(/^the Invalid deed reference page is displayed$/) do
-  assert_selector("//*[@id='search-deed-form']/p",
-                  text: 'The deed you are looking for does not exist!')
+Then(/^the additional provisions are displayed on the deed$/) do |additional_provisions|
+  additional_provisions.hashes.each do |provision|
+    expect(page).to have_content(provision['ADDITIONAL PROVISIONS'])
+  end
 end

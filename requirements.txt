@@ -6,4 +6,5 @@ Flask-Assets
 govuk-template
 requests
 gunicorn
+flake8
 httmock

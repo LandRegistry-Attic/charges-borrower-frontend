@@ -15,3 +15,7 @@ def register_routes(blueprint):
         response.set_cookie('borrower_id', value='1')
         response.set_cookie('deed_id', value=deed_ref_num)
         return response
+
+    @blueprint.route('/')
+    def start_page():
+        return views.Start().render()
