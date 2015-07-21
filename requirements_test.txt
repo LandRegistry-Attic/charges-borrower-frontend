@@ -4,3 +4,4 @@ lxml
 coverage
 flake8
 Flask-Script
+Flask-API
