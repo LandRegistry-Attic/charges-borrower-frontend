@@ -7,7 +7,7 @@ class borrower_frontend (
     $group = 'vagrant',
     $subdomain = 'borrower-frontend',
     $domain = undef,
-    $deed_api_address = 'http://localhost:5050'
+    $deed_api_address = 'http://deedapi.dev.service.gov.uk'
 ) {
   require ::standard_env
 
