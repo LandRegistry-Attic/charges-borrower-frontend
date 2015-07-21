@@ -5,6 +5,8 @@ class borrower_frontend (
     $branch_or_revision = 'master',
     $owner = 'vagrant',
     $group = 'vagrant',
+    $subdomain = 'borrower-frontend',
+    $domain = undef,
     $deed_api_address = 'http://localhost:5050'
 ) {
   require ::standard_env
@@ -66,5 +68,8 @@ class borrower_frontend (
       File['/etc/systemd/system/borrower_frontend.service'],
       File['/var/run/borrower_frontend'],
     ],
+  }
+  if $environment == 'development' {
+    standard_env::dev_host { $subdomain: }
   }
 }
