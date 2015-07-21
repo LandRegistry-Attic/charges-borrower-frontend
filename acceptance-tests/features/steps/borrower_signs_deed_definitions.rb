@@ -14,14 +14,12 @@ When(/^I request deed data from the api$/) do
   @deed = HTTP.get($DEED_API_URL + "/deed/" + @deed_id.to_s)
 end
 
-Then(/^the deed data includes the signature consisting of full name and date$/) do
-  JSON.parse(@deed.body)['operative-deed']['signatures'][0]
-end
-
-Given(/^I view a deed that is not associated with my id$/) do
-  visit($BORROWER_FRONTEND_URL + "/deed/view?deedRefNum=2")
+Then(/^the deed data includes the signature consisting of "([^"]*)"$/) do |name|
+  JSON.parse(@deed.body)['deed']['operative-deed']['signatures'].each do |signature|
+    expect(signature).to include(name)
+  end
 end
 
 Then(/^an invalid status code is displayed$/) do
-  expect(page.status_code.to eq(403))
+  expect(page.status_code).to eq(403)
 end
