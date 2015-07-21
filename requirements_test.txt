@@ -3,3 +3,4 @@ xmlrunner
 lxml
 coverage
 flake8
+Flask-Script
