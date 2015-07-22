@@ -1,11 +1,25 @@
-Given(/^I navigate to the view mortgage deed page$/) do
-  visit("#{$BORROWER_FRONTEND_URL}/deed/view?deedRefNum=1")
+Given(/^I have signed my mortgage deed as "([^"]*)"$/) do |name|
+  steps %Q{
+  Given I search for the created deed
+  When I enter the borrowers signature "#{name}"
+  And I click on the "Sign the deed" button
+  }
 end
 
-When(/^I click the Sign deed button$/) do
-  click_button('Sign the deed')
+When(/^I enter the borrowers signature "([^"]*)"$/) do |name|
+  fill_in('borrowerName', with: name)
 end
 
-Then(/^the signing confirmation page is displayed$/) do
-  assert_selector(".//*[@id='content']/div/p", text: 'You have signed the deed')
+When(/^I request deed data from the api$/) do
+  @deed = HTTP.get($DEED_API_URL + "/deed/" + @deed_id.to_s)
+end
+
+Then(/^the deed data includes the signature consisting of "([^"]*)"$/) do |name|
+  JSON.parse(@deed.body)['deed']['operative-deed']['signatures'].each do |signature|
+    expect(signature).to include(name)
+  end
+end
+
+Then(/^an invalid status code is displayed$/) do
+  expect(page.status_code).to eq(403)
 end

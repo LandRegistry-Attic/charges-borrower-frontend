@@ -2,14 +2,14 @@ from tests.helpers import with_client, setUpApp, with_context
 import unittest
 
 
-class TestSearchDeed(unittest.TestCase):
+class TestSignDeedSuccess(unittest.TestCase):
     def setUp(self):
         setUpApp(self)
 
     @with_context
     @with_client
     def test_sign_deed_post(self, client):
-        res = client.post('/deed/sign')
+        res = client.post('/deed/sign', data={"borrowerName": "JohnSmith"})
 
         self.assertEqual(res.status_code, 303)
 

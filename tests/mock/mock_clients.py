@@ -1,4 +1,6 @@
 from app.service.model import Borrower, LandProperty, Lender, Address, Deed
+from flask.ext.api import status
+from flask import jsonify
 
 
 class DeedApiMockClient:
@@ -13,3 +15,8 @@ class DeedApiMockClient:
         deed = Deed([borrower], lender, land_property, "", [], [], "")
 
         return deed
+
+
+class ScribeApiMockClient:
+    def sign_deed(self, deed_id, borrower_id, borrower_name):
+        return jsonify(status_code=status.HTTP_200_OK)
