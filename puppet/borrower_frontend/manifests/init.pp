@@ -8,7 +8,7 @@ class borrower_frontend (
     $subdomain = 'borrower-frontend',
     $domain = undef,
     $deed_api_address = 'http://deedapi.dev.service.gov.uk',
-    $scribe_api_address = 'http://localhost:6000'
+    $scribe_api_address = 'http://scribeapi.dev.service.gov.uk'
 
 ) {
   require ::standard_env
