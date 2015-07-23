@@ -5,16 +5,6 @@ Feature: Borrower Views the Deed
     I want to search for my mortgage document
     So that I can view it
 
-Acceptance Criteria:
-    -When I search using the correct reference number the deed displays.
-    -It must display:
-      - property description
-      - borrower's name and address
-      - lender's name  (not address)
-      - charging clause
-      - additional provisions
-    -Incorrect reference number returns  - error message (new page).
-
 Background:
     Given I have created the following deed:
     """
@@ -69,6 +59,15 @@ Background:
 
 
 Scenario: Borrower enters a valid deed reference
+
+    - correct deed displayed when borrower id entered
+    - deed must display:
+      - property description
+      - borrower's name and address
+      - lender's name  (not address)
+      - charging clause
+      - additional provisions
+
     When I search for the created deed
     Then the "Sign your mortgage deed" page is displayed
     And the property description is displayed on the deed
@@ -91,5 +90,8 @@ Scenario: Borrower enters a valid deed reference
       | No disposition of the registered estate by the proprietor of the registered estate is to be registered without a written consent signed by Bank of England Plc.   |
 
 Scenario: Borrower enters invalid deed reference
+
+    - information message displayed when incorrect id entered
+
     When I search for an invalid deed
     Then the "Deed not found!" page is displayed
