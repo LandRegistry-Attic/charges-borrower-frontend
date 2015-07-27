@@ -9,7 +9,7 @@ class TestSearchDeed(unittest.TestCase):
     @with_context
     @with_client
     def test_search_deed_post(self, client):
-        res = client.post('/deed/search', data={'deedRefNumber': '38'})
+        res = client.post('/deed/search', data={'borrower_token': '38'})
 
         self.assertEqual(res.status_code, 303)
 

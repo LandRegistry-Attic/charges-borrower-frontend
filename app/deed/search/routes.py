@@ -3,7 +3,7 @@ from flask import redirect, url_for, request, current_app
 
 
 def register_routes(blueprint):
-    @blueprint.route('/', methods=['GET'])
+
     @blueprint.route('/deed/search', methods=['GET'])
     def search_deed():
         return views.Search().render()

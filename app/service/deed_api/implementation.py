@@ -7,7 +7,8 @@ DEED_API_BASE_HOST = config.DEED_API_BASE_HOST
 
 
 def get_deed_json(borrower_token):
-    return requests.get(DEED_API_BASE_HOST + '/deed/borrower/' + str(borrower_token)).json()
+    return requests.get(DEED_API_BASE_HOST + '/deed/borrower/' +
+                        str(borrower_token)).json()
 
 
 def get_deed(borrower_token):
