@@ -5,9 +5,9 @@ from flask import request, redirect, url_for
 def register_routes(blueprint, deed_api):
     @blueprint.route('/deed/view')
     def view_deed():
-        deed_ref_num = request.args.get('deedRefNum')
+        borrower_token = request.args.get('borrower_token')
         try:
-            deed = deed_api.get_deed(deed_ref_num)
+            deed = deed_api.get_deed(borrower_token)
             return views.View(deed).render()
         except ValueError:
             return redirect(url_for('deed.view.deed_not_found'))
