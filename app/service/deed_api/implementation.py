@@ -23,7 +23,8 @@ def get_deed(borrower_token):
         return deed_id_json['id']
 
     def signing_borrower_id_from_json(borrowers):
-        filter(lambda borrower_item: borrower_item["token"] == borrower_token, borrowers)
+        filter(lambda borrower_item:
+               borrower_item["token"] == borrower_token, borrowers)
 
         return list(borrowers)[0]["id"]
 

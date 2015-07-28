@@ -8,5 +8,3 @@ $BORROWER_FRONTEND_URL = (
   ENV['BORROWER_FRONTEND_URL'] || 'http://borrower-frontend.dev.service.gov.uk'
 )
 $DEED_API_URL = (ENV['DEED_API_URL'] || 'http://deedapi.dev.service.gov.uk')
-
-@@TEST_DEEDS = []
