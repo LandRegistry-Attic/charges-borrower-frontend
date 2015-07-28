@@ -1,6 +1,8 @@
 class Deed:
-    def __init__(self, borrowers, lender, land_property,
+    def __init__(self, deed_id, signing_borrower_id, borrowers, lender, land_property,
                  charging_clause, restrictions, provisions, effective_clause):
+        self.id = deed_id
+        self.signing_borrower_id = signing_borrower_id
         self.borrowers = borrowers
         self.lender = lender
         self.land_property = land_property

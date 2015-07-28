@@ -19,6 +19,14 @@ def get_deed(borrower_token):
 
         return [borrower_from_dict(item) for item in borrowers_json]
 
+    def deed_id_from_json(deed_id_json):
+        return deed_id_json['id']
+
+    def signing_borrower_id_from_json(borrowers):
+        filter(lambda borrower_item: borrower_item["token"] == borrower_token, borrowers)
+
+        return list(borrowers)[0]["id"]
+
     def lender_from_json(lender_json):
         return Lender(lender_json['name'],
                       address_from_json(lender_json['address']),
@@ -49,7 +57,9 @@ def get_deed(borrower_token):
     def deed_from_json(deed_json):
         operative_deed = deed_json['deed']['operative-deed']
 
-        return Deed(borrowers_from_json(operative_deed['borrowers']),
+        return Deed(deed_id_from_json(deed_json),
+                    signing_borrower_id_from_json(operative_deed['borrowers']),
+                    borrowers_from_json(operative_deed['borrowers']),
                     lender_from_json(operative_deed['lender']),
                     title_from_json(operative_deed['title']),
                     charging_clause_from_json(operative_deed),

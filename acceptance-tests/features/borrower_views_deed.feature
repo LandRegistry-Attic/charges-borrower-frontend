@@ -94,4 +94,4 @@ Scenario: Borrower enters invalid deed reference
     - information message displayed when incorrect id entered
 
     When I search for an invalid deed
-    Then the "Deed not found!" page is displayed
+    Then the "Deed not found" page is displayed
