@@ -15,4 +15,4 @@ class View(Template):
 
 
 class NotFound(Template):
-    pageTitle = "Deed not found!"
+    pageTitle = "Deed not found"

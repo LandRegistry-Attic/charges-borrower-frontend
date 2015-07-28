@@ -1,14 +1,19 @@
 When(/^I search for the created deed$/) do
-  fill_in('deedRefNumber', with: @deed_id)
+  @deed = HTTP.get($DEED_API_URL + '/deed/' + @deed_id.to_s)
+  @borrower_token =
+    JSON.parse(@deed.body)['deed']['operative-deed']['borrowers'][0]['token']
+  fill_in('borrower_token', with: @borrower_token)
   click_button('Search')
 end
 
 When(/^I search for an invalid deed$/) do
-  fill_in('deedRefNumber', with: 0)
+  fill_in('borrower_token', with: 0)
   click_button('Search')
 end
 
-Then(/^the property description is displayed on the deed$/) do |property_description|
+Then(
+  /^the property description is displayed on the deed$/
+) do |property_description|
   property_description.hashes.each do |property|
     expect(page).to have_content(property['STREET ADDRESS'])
     expect(page).to have_content(property['EXTENDED ADDRESS'])
@@ -23,7 +28,9 @@ Then(/^the borrowers are displayed on the deed$/) do |borrowers|
   end
 end
 
-Then(/^the borrower addresses are displayed on the deed$/) do |borrower_addresses|
+Then(
+  /^the borrower addresses are displayed on the deed$/
+) do |borrower_addresses|
   borrower_addresses.hashes.each do |borrower_address|
     expect(page).to have_content(borrower_address['STREET ADDRESS'])
     expect(page).to have_content(borrower_address['EXTENDED ADDRESS'])
@@ -43,7 +50,9 @@ Then(/^the charging clause is displayed on the deed$/) do
                               'by this charge.')
 end
 
-Then(/^the additional provisions are displayed on the deed$/) do |additional_provisions|
+Then(
+  /^the additional provisions are displayed on the deed$/
+) do |additional_provisions|
   additional_provisions.hashes.each do |provision|
     expect(page).to have_content(provision['ADDITIONAL PROVISIONS'])
   end

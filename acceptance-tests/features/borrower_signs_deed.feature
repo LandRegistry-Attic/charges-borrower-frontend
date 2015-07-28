@@ -156,5 +156,6 @@ Scenario: Borrower can only sign deed for deed id matching borrower
     """
     And I navigate to the borrower frontend "/deed/search" page
     When I search for the created deed
+    And I change the deed id in the cookie
     And I click on the "Sign the deed" button
     Then an invalid status code is displayed

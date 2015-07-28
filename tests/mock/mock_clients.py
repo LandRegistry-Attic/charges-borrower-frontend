@@ -12,7 +12,7 @@ class DeedApiMockClient:
         borrower = Borrower("John Andrew", address)
         lender = Lender("Bank of England Plc", address, "2347676")
         land_property = LandProperty(address, "GHR67832")
-        deed = Deed([borrower], lender, land_property, "", [], [], "")
+        deed = Deed("", "", [borrower], lender, land_property, "", [], [], "")
 
         return deed
 
