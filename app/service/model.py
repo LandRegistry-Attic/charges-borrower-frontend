@@ -2,7 +2,7 @@ class Deed:
     def __init__(self, deed_id, signing_borrower_id, borrowers,
                  lender, land_property, charging_clause,
                  restrictions, provisions, effective_clause,
-                 signing_borrower_signed):
+                 signing_borrower_signed, names_signed):
         self.id = deed_id
         self.signing_borrower_id = signing_borrower_id
         self.borrowers = borrowers
@@ -13,6 +13,7 @@ class Deed:
         self.provisions = provisions
         self.effective_clause = effective_clause
         self.signing_borrower_signed = signing_borrower_signed
+        self.names_signed = names_signed
 
 
 class Borrower:
@@ -40,3 +41,8 @@ class Address:
         self.extended_address = extended
         self.locality = locality
         self.postal_code = postal_code
+
+class SignedStatus:
+    def __init__(self, all_signed, names_unsigned):
+        self.all_signed = all_signed
+        self.names_unsigned = names_unsigned

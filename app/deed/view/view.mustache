@@ -101,6 +101,15 @@
         {{/has_provision}}
     </div>
 
+    <div class="text" id="borrower-electronic-signature">
+        <h3 id="electronic-signature" class="heading-small">Borrower electronic signature(s):</h3>
+            <ul class="list-bullet">
+                {{#deed.names_signed}}
+                    <li>{{.}}</li>
+                {{/deed.names_signed}}
+            </ul>
+    </div>
+
     <div class="text">
         <div class="deed-document--divider">
             <p class="font-xsmall">Mortgage deed reference MD859K.</p>

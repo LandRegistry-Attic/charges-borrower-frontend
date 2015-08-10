@@ -1,7 +1,7 @@
 import requests
 
 from app import config
-from app.service.model import Borrower, LandProperty, Lender, Address, Deed
+from app.service.model import Borrower, LandProperty, Lender, Address, Deed, SignedStatus
 
 DEED_API_BASE_HOST = config.DEED_API_BASE_HOST
 
@@ -9,6 +9,17 @@ DEED_API_BASE_HOST = config.DEED_API_BASE_HOST
 def get_deed_json(borrower_token):
     return requests.get(DEED_API_BASE_HOST + '/deed/borrower/' +
                         str(borrower_token)).json()
+
+def get_signed_status_json(deed_id):
+    return requests.get(DEED_API_BASE_HOST + '/deed/' +
+                        str(deed_id)).json() + '/signed_status'
+
+def get_signed_status(deed_id):
+
+    signed_status_json = get_signed_status_json(deed_id)
+
+    return SignedStatus(signed_status_json["all_signed"],
+                        signed_status_json["names"])
 
 
 def get_deed(borrower_token):
@@ -70,6 +81,16 @@ def get_deed(borrower_token):
 
         return True if len(signed) > 0 else False
 
+    def borrowers_signed_from_json(signatures):
+        signatures = list(
+            filter(lambda signature:
+                   type(signature) is dict,
+                   signatures))
+
+        names_signed = map(lambda signature: signature["borrower_name"], signatures)
+
+        return names_signed
+
     def deed_from_json(deed_json):
         operative_deed = deed_json['deed']['operative-deed']
 
@@ -82,7 +103,8 @@ def get_deed(borrower_token):
                     restrictions_from_json(operative_deed),
                     provisions_from_json(operative_deed),
                     effective_clause_from_json(operative_deed),
-                    signing_borrower_signed_from_json(operative_deed))
+                    signing_borrower_signed_from_json(operative_deed),
+                    borrowers_signed_from_json(operative_deed["signatures"]))
 
     deed_json = get_deed_json(borrower_token)
 
