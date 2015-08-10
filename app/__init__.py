@@ -19,7 +19,9 @@ def create_manager(deed_api_client=make_deed_client,
     app.register_blueprint(helloworld.blueprint)
     app.register_blueprint(search.blueprint)
     app.register_blueprint(view.blueprint(deed_api_client()))
-    app.register_blueprint(sign.blueprint(scribe_api_client(), deed_api_client()))
+    app.register_blueprint(
+        sign.blueprint(scribe_api_client(), deed_api_client())
+    )
     app.register_blueprint(assets.govuk_template, url_prefix='/template')
 
     return manager

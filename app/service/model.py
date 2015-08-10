@@ -42,6 +42,7 @@ class Address:
         self.locality = locality
         self.postal_code = postal_code
 
+
 class SignedStatus:
     def __init__(self, all_signed, names_unsigned):
         self.all_signed = all_signed

@@ -1,5 +1,5 @@
 from app.deed.sign import views
-from flask import redirect, url_for, request, abort
+from flask import redirect, url_for, request, abort, make_response
 
 
 def register_routes(blueprint, scribe_api, deed_api):
