@@ -15,7 +15,7 @@ def get_deed_json(borrower_token):
 
 def get_signed_status_json(deed_id):
     return requests.get(DEED_API_BASE_HOST + '/deed/' +
-                        str(deed_id)).json() + '/signed_status'
+                        str(deed_id) + '/signed_status').json()
 
 
 def get_signed_status(deed_id):
