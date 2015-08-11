@@ -1,3 +1,5 @@
+@US18
+
 Feature:
     As a Borrower who has signed a deed
     I want to see whether all other borrowers have signed
@@ -68,33 +70,17 @@ Background:
         """
 
 
-Scenario: Borrower electronic signature box displayed for each borrower that
-          needs to sign
-
-    Given borrower 1 of 2 navigates to sign the deed page
-    Then 2 Borrower electronic signature(s) boxes are displayed
-
-
 Scenario: First borrower signs mortgage deed
 
-    Given borrower 1 navigates to sign the deed page
-    When borrower 1 signs the deed
-    Then a message is displayed to inform the borrower that borrower 2 still has to sign
+    Given borrower one navigates to sign the deed page
+    When I enter the borrowers "name"
+    Then a message is displayed 'The following people still need to sign the mortgage deed'
+    And borrower two is listed under the message
 
 
-Scenario: First borrower views the deed that they have signed and saved
+Scenario: Second borrower signs mortgage deed
 
-    Given borrower 1 has already signed the deed
-    When borrower 1 views the deed for a second time
-    Then the signing area has been removed
-    And a message displayed ‘You have already signed this deed’
-    And the first borrowers name will appear in the borrowers electronic signature box
-
-Scenario: Second borrower views the deed that all borrowers have signed and
-          saved
-
-    Given borrower 1 and 2 have already signed the deed
-    When borrower 2 views the deed for a second time
-    Then the signing are has been removed
-    And a message displayed ‘You have already signed this deed’
-    And all borrower names will appear in the borrowers electronic signature boxes
+    Given borrower two navigates to sign the deed page
+    When I enter the borrowers "name"
+    Then a message is displayed 'Everyone has now signed the deed'
+    And no borrowers are listed under the message
