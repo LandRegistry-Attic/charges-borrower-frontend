@@ -9,4 +9,4 @@ def sign_deed(deed_id, borrower_id, borrower_name):
     url = SCRIBE_API_BASE_HOST + "/deed/" + deed_id + "/" + borrower_id \
         + "/signature/"
     print("ScribeAPI sign URL" + url)
-    return requests.post(url, data=json_body)
+    return requests.post(url, json=json_body)
