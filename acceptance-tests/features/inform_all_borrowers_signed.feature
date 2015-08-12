@@ -9,14 +9,7 @@ Feature:
 Acceptance criteria
   - message to inform borrower which other borrowers need to sign
   - message displayed to borrower when all borrowers have signed
-    (All borrowers have signed the deed)
-  - same borrower cannot sign the deed twice, when viewing deed after signing,
-    the signature area will not be displayed and will be replaced by message
-    'You have already signed the deed'
-  - once the deed has been signed and saved, all saved signatures will appear in
-    the Borrower electronic signature box
-  - there will be a Borrower electronic signature(s) box displayed for each
-    borrower that needs to sign
+    (Everyone has now signed the deed)
 
 Background:
         Given I have created the following deed:
@@ -72,15 +65,16 @@ Background:
 
 Scenario: First borrower signs mortgage deed
 
-    Given borrower one navigates to sign the deed page
-    When I enter the borrowers "name"
+    Given borrower one of two navigates to sign the deed page
+    When I enter the borrowers name
     Then a message is displayed 'The following people still need to sign the mortgage deed'
     And borrower two is listed under the message
 
 
 Scenario: Second borrower signs mortgage deed
 
-    Given borrower two navigates to sign the deed page
-    When I enter the borrowers "name"
+    Given borrower one has already signed the deed
+    And borrower two of two navigates to sign the deed page
+    When I enter the second borrowers name
     Then a message is displayed 'Everyone has now signed the deed'
     And no borrowers are listed under the message
