@@ -2,10 +2,13 @@ from app.deed.sign import views
 from flask import redirect, url_for, request, abort
 
 
-def register_routes(blueprint, scribe_api):
+def register_routes(blueprint, scribe_api, deed_api):
     @blueprint.route('/deed/sign/confirmation', methods=['GET'])
     def confirmation():
-        return views.Confirmation().render()
+        deed_id = request.cookies.get('deed_id')
+        signed_details = deed_api.get_signed_status(deed_id)
+
+        return views.Confirmation(None, signed_details).render()
 
     @blueprint.route('/deed/sign', methods=['POST'])
     def sign_deed():

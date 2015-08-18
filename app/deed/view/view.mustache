@@ -101,6 +101,15 @@
         {{/has_provision}}
     </div>
 
+    <div class="text" id="borrower-electronic-signature">
+        <h3 id="electronic-signature" class="heading-small">Borrower electronic signature(s):</h3>
+            <ul class="list-bullet">
+                {{#deed.names_signed}}
+                    <li>{{.}}</li>
+                {{/deed.names_signed}}
+            </ul>
+    </div>
+
     <div class="text">
         <div class="deed-document--divider">
             <p class="font-xsmall">Mortgage deed reference MD859K.</p>
@@ -108,7 +117,11 @@
     </div>
 </article>
 
+{{#deed.signing_borrower_signed}}
+<p>This mortgage deed has already been signed.</p>
+{{/deed.signing_borrower_signed}}
 
+{{^deed.signing_borrower_signed}}
 <form id="sign-deed" action="/deed/sign" method="POST">
     <div class="form-group">
         <label class="form-label" for="deed-ref">Name</label>
@@ -118,3 +131,4 @@
         <input type="submit" class="button" value="Sign the deed">
     </div>
 </form>
+{{/deed.signing_borrower_signed}}

@@ -1,4 +1,35 @@
 <p>
-    You have signed the deed!
+  You’ve confirmed the details of your mortgage and signed the deed.
 </p>
 
+
+{{#signed_status.all_signed}}
+<p>
+  Everyone has now signed the deed.
+</p>
+{{/signed_status.all_signed}}
+{{^signed_status.all_signed}}
+<span class="still-to-sign">
+  The following people still need to sign the mortgage deed:
+  <ul>
+    {{#signed_status.names_unsigned}}
+    <li>{{.}}</li>
+    {{/signed_status.names_unsigned}}
+  </ul>
+  <a href="/">Back to start</a>
+</span>
+{{/signed_status.all_signed}}
+
+
+<h2>What happens next</h2>
+
+<p>
+  When everyone has signed the deed, your lender or conveyancer will
+  continue the process. The Land Registry will then update title
+  to reflect the change.
+</p>
+
+<p>
+  If you have any questions about your mortgage transaction, please
+  contact your lender or your conveyancer.
+</p>

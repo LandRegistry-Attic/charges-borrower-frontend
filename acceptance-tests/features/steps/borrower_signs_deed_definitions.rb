@@ -19,7 +19,7 @@ end
 Then(/^the deed data includes the signature consisting of "([^"]*)"$/) do |name|
   @signatures = JSON.parse(@deed.body)['deed']['operative-deed']['signatures']
   @signatures.each do |signature|
-    expect(signature).to include(name)
+    expect(signature['signature']).to include(name)
   end
 end
 
