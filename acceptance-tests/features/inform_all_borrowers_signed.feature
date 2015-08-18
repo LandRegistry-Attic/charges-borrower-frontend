@@ -66,15 +66,15 @@ Background:
 Scenario: First borrower signs mortgage deed
 
     Given borrower one of two navigates to sign the deed page
-    When I enter the borrowers name
-    Then a message is displayed 'The following people still need to sign the mortgage deed'
-    And borrower two is listed under the message
+    When I enter the borrowers name and select to sign the deed
+    Then a message is displayed "The following people still need to sign the mortgage deed"
+    Then borrower two is listed under the message "Sarah Jane Smith"
 
 
 Scenario: Second borrower signs mortgage deed
 
     Given borrower one has already signed the deed
     And borrower two of two navigates to sign the deed page
-    When I enter the second borrowers name
-    Then a message is displayed 'Everyone has now signed the deed'
+    When I enter the second borrowers name and select to sign the deed
+    Then a message is displayed "Everyone has now signed the deed"
     And no borrowers are listed under the message
