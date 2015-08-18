@@ -7,23 +7,22 @@ Given(/^borrower one of two navigates to sign the deed page$/) do
   click_button('Search')
 end
 
-When(/^I enter the borrowers name$/) do
+When(/^I enter the borrowers name and select to sign the deed$/) do
   fill_in('user-name', with: 'Peter Smith')
   click_button('Sign the deed')
 end
 
-Then(/^a message is displayed 'The following people still need to sign the mortgage deed'$/) do
-  expect(page).to have_content('The following people still need to sign the '\
-                               'mortgage deed')
+Then(/^a message is displayed "([^"]*)"$/) do |message|
+  expect(page).to have_content(message["message"])
 end
 
-And(/^borrower two is listed under the message$/) do
-  expect(page).to have_content('Sarah Jane Smith')
+Then(/^borrower two is listed under the message "([^"]*)"$/) do |borrower2|
+  expect(page).to have_content(borrower2["borrower2"])
 end
 
 Given(/^borrower one has already signed the deed$/) do
   steps %(Given borrower one of two navigates to sign the deed page)
-  steps %(When I enter the borrowers name)
+  steps %(When I enter the borrowers name and select to sign the deed)
 end
 
 When(/^borrower two of two navigates to sign the deed page$/) do
@@ -35,14 +34,14 @@ When(/^borrower two of two navigates to sign the deed page$/) do
   click_button('Search')
 end
 
-And(/^I enter the second borrowers name$/) do
+And(/^I enter the second borrowers name and select to sign the deed$/) do
   fill_in('user-name', with: 'Sarah Jane Smith')
   click_button('Sign the deed')
 end
 
-Then(/^a message is displayed 'Everyone has now signed the deed'$/) do
-  expect(page).to have_content('Everyone has now signed the deed')
-end
+#Then(/^a message is displayed 'Everyone has now signed the deed'$/) do
+  #expect(page).to have_content('Everyone has now signed the deed')
+#end
 
 And(/^no borrowers are listed under the message$/) do
   page.should have_no_content('Peter Smith')
