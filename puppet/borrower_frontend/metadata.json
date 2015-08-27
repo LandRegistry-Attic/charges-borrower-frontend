@@ -8,7 +8,6 @@
   "project_page": "https://github.com/LandRegistry/charges-borrower-frontend",
   "issues_url": "https://github.com/LandRegistry/charges-borrower-frontend",
   "dependencies": [
-    { "name": "puppetlabs/vcsrepo" },
-    { "name": "puppetlabs/git" }
+    { "name": "puppetlabs/vcsrepo" }
   ]
 }
