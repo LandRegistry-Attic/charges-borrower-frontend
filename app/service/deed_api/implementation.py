@@ -71,14 +71,14 @@ def get_deed(borrower_token):
     def effective_clause_from_json(operative_deed):
         return operative_deed['effective-clause']
 
-    def signing_borrower_signed_from_json(deed):
+    def signing_borrower_signed_from_json(operative_deed):
         signatures = list(
             filter(lambda signature:
                    type(signature) is dict,
-                   deed.get("signatures")))
+                   operative_deed.get("signatures")))
 
         signing_borrower = signing_borrower_id_from_json(
-            deed['operative-deed']["borrowers"]
+            operative_deed["borrowers"]
         )
 
         signed = list(filter(lambda signature:
@@ -101,8 +101,7 @@ def get_deed(borrower_token):
         return names_signed
 
     def deed_from_json(deed_json):
-        deed = deed_json['deed']
-        operative_deed = deed['operative-deed']
+        operative_deed = deed_json['deed']['operative-deed']
 
         return Deed(deed_id_from_json(deed_json),
                     signing_borrower_id_from_json(operative_deed['borrowers']),
@@ -113,8 +112,8 @@ def get_deed(borrower_token):
                     restrictions_from_json(operative_deed),
                     provisions_from_json(operative_deed),
                     effective_clause_from_json(operative_deed),
-                    signing_borrower_signed_from_json(deed),
-                    borrowers_signed_from_json(deed["signatures"]))
+                    signing_borrower_signed_from_json(operative_deed),
+                    borrowers_signed_from_json(operative_deed["signatures"]))
 
     deed_json = get_deed_json(borrower_token)
 
