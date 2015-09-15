@@ -13,11 +13,11 @@ When(/^I request deed data from the api$/) do
 end
 
 When(/^I change the deed id in the cookie$/) do
-  page.driver.set_cookie('borrower_id', 'the is a random phrase')
+  page.driver.set_cookie('borrower_id', '24071987')
 end
 
 Then(/^the deed data includes the signature consisting of "([^"]*)"$/) do |name|
-  @signatures = JSON.parse(@deed.body)['deed']['operative-deed']['signatures']
+  @signatures = JSON.parse(@deed.body)['deed']['signatures']
   @signatures.each do |signature|
     expect(signature['signature']).to include(name)
   end
