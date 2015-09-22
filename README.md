@@ -6,7 +6,7 @@ mortgage deeds online.
 ## Contents
 - [Usage](#usage)
 - [Getting Started](#getting-started)
-- [Acceptance Tests](#Acceptance Tests)
+- [Acceptance Tests](#acceptance-tests)
 
 ## Usage
 ```
