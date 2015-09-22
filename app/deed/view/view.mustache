@@ -66,10 +66,11 @@
                             <b>{{name}}</b>
                         </span><br>
                         <span class="borrower-address">
-                        {{address.street_address}}<br>
-                            {{address.extended_address}}<br>
-                            {{address.locality}}<br>
-                            {{address.postal_code}}<br>
+                            {{#address}}
+                                <span>
+                                    {{.}}<br>
+                                </span>
+                            {{/address}}
                         </span>
                     </p>
                 </div>

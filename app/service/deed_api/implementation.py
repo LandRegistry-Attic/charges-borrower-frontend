@@ -29,8 +29,11 @@ def get_signed_status(deed_id):
 def get_deed(borrower_token):
     def borrowers_from_json(borrowers_json):
         def borrower_from_dict(borrower):
-            return Borrower(borrower['name'],
-                            address_from_json(borrower['address']))
+            name = "%s %s %s" % (borrower['first_name'],
+                                 borrower['middle_names'],
+                                 borrower['last_name'])
+
+            return Borrower(name, borrower['address'])
 
         return [borrower_from_dict(item) for item in borrowers_json]
 
