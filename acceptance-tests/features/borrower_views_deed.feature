@@ -8,6 +8,7 @@ Feature: Borrower Views the Deed
 Background:
     Given I have created a case and deed with two borrowers
 
+@delete_test_data
 Scenario: Borrower enters a valid deed reference
 
     - correct deed displayed when borrower id entered
@@ -40,6 +41,7 @@ Scenario: Borrower enters a valid deed reference
       | The lender is under an obligation to make further advances and applies for the obligation to be entered in the register.                                          |
       | No disposition of the registered estate by the proprietor of the registered estate is to be registered without a written consent signed by Bank of England Plc.   |
 
+@delete_test_data
 Scenario: Borrower enters invalid deed reference
 
     - information message displayed when incorrect id entered

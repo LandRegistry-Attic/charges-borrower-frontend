@@ -5,6 +5,7 @@ Feature: Borrower Signs the Deed
     I want to be able to sign my mortgage deed (Mock)
     So that the mortgage company will release the money
 
+@delete_test_data
 Scenario: Borrower signs mortgage deed
 
     - Borrower can sign the deed
@@ -18,6 +19,7 @@ Scenario: Borrower signs mortgage deed
     And I click on the "Sign the deed" button
     Then the "You have signed the deed" page is displayed
 
+@delete_test_data
 Scenario: Retrieve signed mortgage deed from deed API
 
     - Signed deed is saved to database
@@ -30,6 +32,7 @@ Scenario: Retrieve signed mortgage deed from deed API
     When I request deed data from the api
     Then the deed data includes the signature consisting of "John Hughes"
 
+@delete_test_data
 Scenario: Borrower can only sign deed for deed id matching borrower
 
     - Borrower can only sign deed for deed id matching borrower

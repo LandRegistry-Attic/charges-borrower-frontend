@@ -14,6 +14,7 @@ Acceptance criteria
 Background:
     Given I have created a case and deed with two borrowers
 
+@delete_test_data
 Scenario: First borrower signs mortgage deed
 
     Given borrower one of two navigates to sign the deed page
@@ -21,6 +22,7 @@ Scenario: First borrower signs mortgage deed
     Then a message is displayed "The following people still need to sign the mortgage deed"
     And borrower two is listed under the message "Susan Paula Hughes"
 
+@delete_test_data
 Scenario: Second borrower signs mortgage deed
 
     Given borrower one "John Hughes" has already signed the deed
