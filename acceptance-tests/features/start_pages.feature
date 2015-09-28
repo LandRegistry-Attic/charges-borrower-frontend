@@ -1,4 +1,4 @@
-@US71
+@start_pages
 
 Feature: Start Pages on Frontends
   In order to make demos a little easier, and expose our work to other teams better

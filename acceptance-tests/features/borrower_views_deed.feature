@@ -1,4 +1,4 @@
-@US02
+@borrower_views_deed
 
 Feature: Borrower Views the Deed
     As a Borrower
@@ -25,9 +25,9 @@ Scenario: Borrower enters a valid deed reference
       | STREET ADDRESS          | EXTENDED ADDRESS  | LOCALITY  | POSTCODE  |
       | 108 Sutton High Street  | New Addington     | Croydon   | CR0 6TG   |
     And the borrowers are displayed on the deed
-      | BORROWERS         |
-      | John Hughes       |
-      | Susan Hughes      |
+      | BORROWERS               |
+      | John Hughes             |
+      | Susan Paula Hughes      |
     And the borrower addresses are displayed on the deed
       | STREET ADDRESS    | EXTENDED ADDRESS  | LOCALITY      | POSTCODE  |
       | 1 High Street     |                   | Nottingham    | NO9 6YU   |

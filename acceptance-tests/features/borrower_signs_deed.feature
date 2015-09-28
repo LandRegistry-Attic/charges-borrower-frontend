@@ -1,4 +1,4 @@
-@US29
+@borrower_signs_deed
 
 Feature: Borrower Signs the Deed
     As a Borrower

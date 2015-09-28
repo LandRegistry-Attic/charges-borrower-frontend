@@ -1,9 +1,5 @@
-Given(/^I have created the following deed:$/) do |deed_json|
-  @deed_id = create_deed_data(deed_json)
-end
-
 Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
-  visit($BORROWER_FRONTEND_URL + path)
+  visit(Env.borrower_frontend + path)
 end
 
 When(/^I click on the "([^"]*)" link$/) do |button_name|
