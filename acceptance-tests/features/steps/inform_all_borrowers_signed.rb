@@ -25,9 +25,8 @@ end
 
 When(/^borrower two of two navigates to sign the deed page$/) do
   steps %(Given I navigate to the borrower frontend "/deed/search" page)
-  @deed = HTTP.get(Env.deed_api + '/deed/' + @deed_id.to_s)
-  @borrower_token =
-    JSON.parse(@deed.body)['deed']['operative-deed']['borrowers'][1]['token']
+  @retrieved_deed = get_deed_data(@created_deed_id)
+  @borrower_token = @retrieved_deed['deed']['operative-deed']['borrowers'][1]['token']
   fill_in('borrower_token', with: @borrower_token)
   click_button('Search')
 end
