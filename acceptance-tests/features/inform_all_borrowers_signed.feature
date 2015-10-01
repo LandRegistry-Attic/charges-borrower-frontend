@@ -18,7 +18,7 @@ Background:
 Scenario: First borrower signs mortgage deed
 
     Given borrower one of two navigates to sign the deed page
-    When I enter the borrowers name "John Hughes" and select to sign the deed
+    When I enter the borrowers name "John Hughes" and sign the deed
     Then a message is displayed "The following people still need to sign the mortgage deed"
     And borrower two is listed under the message "Susan Paula Hughes"
 
@@ -27,6 +27,6 @@ Scenario: Second borrower signs mortgage deed
 
     Given borrower one "John Hughes" has already signed the deed
     And borrower two of two navigates to sign the deed page
-    When I enter the borrowers name "Susan Paula Hughes" and select to sign the deed
+    When I enter the borrowers name "Susan Paula Hughes" and sign the deed
     Then a message is displayed "Everyone has now signed the deed"
     And no borrowers are listed under the message

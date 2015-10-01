@@ -1,5 +1,6 @@
 When(/^I search for the created deed$/) do
-  @borrower_token = @created_deed['deed']['operative-deed']['borrowers'][0]['token']
+  @borrower_token =
+    @created_deed['deed']['operative-deed']['borrowers'][0]['token']
   fill_in('borrower_token', with: @borrower_token)
   click_button('Search')
 end
