@@ -9,7 +9,7 @@ When(/^I enter the borrowers signature "([^"]*)"$/) do |name|
 end
 
 When(/^I request deed data from the api$/) do
-  @deed = HTTP.get($DEED_API_URL + '/deed/' + @deed_id.to_s)
+  @signed_deed = get_deed_data(@created_deed_id)
 end
 
 When(/^I change the deed id in the cookie$/) do
@@ -17,7 +17,7 @@ When(/^I change the deed id in the cookie$/) do
 end
 
 Then(/^the deed data includes the signature consisting of "([^"]*)"$/) do |name|
-  @signatures = JSON.parse(@deed.body)['deed']['signatures']
+  @signatures = @signed_deed['deed']['signatures']
   @signatures.each do |signature|
     expect(signature['signature']).to include(name)
   end

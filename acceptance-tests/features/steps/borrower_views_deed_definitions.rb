@@ -1,7 +1,6 @@
 When(/^I search for the created deed$/) do
-  @deed = HTTP.get($DEED_API_URL + '/deed/' + @deed_id.to_s)
   @borrower_token =
-    JSON.parse(@deed.body)['deed']['operative-deed']['borrowers'][0]['token']
+    @created_deed['deed']['operative-deed']['borrowers'][0]['token']
   fill_in('borrower_token', with: @borrower_token)
   click_button('Search')
 end
